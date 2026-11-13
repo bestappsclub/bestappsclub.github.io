@@ -1,0 +1,65 @@
+# Monthly check for newly published public-holiday schedules (万年历吉日 reads data/*-holidays.json).
+# Nothing goes live automatically: new data is pushed to the `holiday-update` branch and offered
+# for review as a pull request (or an issue with a compare link, if Actions can't open PRs here).
+name: Update holiday data
+
+on:
+  schedule:
+    - cron: "17 3 1 * *"   # 1st of every month, 03:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency: update-holidays
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BRANCH: holiday-update
+      TITLE: 节假日数据有更新，请确认
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check sources
+        id: run
+        run: python3 data/scripts/update_holidays.py >> "$GITHUB_OUTPUT"
+
+      - name: Summary
+        run: cat holiday-update.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Offer the update for review
+        if: steps.run.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git add data/cn-holidays.json data/sg-holidays.json
+          git commit -m "Update holiday data ($(date +%Y-%m-%d))"
+          git push -f origin "$BRANCH"
+
+          pr=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number')
+          if [ -n "$pr" ]; then
+            gh pr comment "$pr" --body-file holiday-update.md
+          elif ! gh pr create --base main --head "$BRANCH" --title "$TITLE" --body-file holiday-update.md; then
+            # Actions may not be allowed to open PRs in this repo: use one issue with a compare link.
+            {
+              cat holiday-update.md
+              echo
+              echo "确认无误后，在这里创建并合并 Pull Request（合并后约 1 分钟上线，App 一天内更新）："
+              echo "https://github.com/${GITHUB_REPOSITORY}/compare/main...${BRANCH}?expand=1"
+            } > issue.md
+            issue=$(gh issue list --state open --search "\"$TITLE\" in:title" --json number --jq '.[0].number')
+            if [ -n "$issue" ]; then gh issue comment "$issue" --body-file issue.md; else gh issue create --title "$TITLE" --body-file issue.md; fi
+          fi
+
+      - name: Remind if next year's China schedule is late
+        if: steps.run.outputs.missing_next_cn == 'true' && steps.run.outputs.changed != 'true'
+        run: |
+          t="还没有拿到明年的中国大陆放假安排"
+          issue=$(gh issue list --state open --search "\"$t\" in:title" --json number --jq '.[0].number')
+          [ -n "$issue" ] || gh issue create --title "$t" --body-file holiday-update.md

@@ -18,3 +18,14 @@ To add a year:
 
 A year listed in `years` replaces the app's built-in data for that year, so corrections work too.
 Keep `version` at 1 unless the format changes (the app ignores versions it doesn't know).
+
+## Automatic check (GitHub Action)
+`.github/workflows/update-holidays.yml` runs `data/scripts/update_holidays.py` on the 1st of every month
+(or by hand: Actions › Update holiday data › Run workflow). It reads
+[NateScarlet/holiday-cn](https://github.com/NateScarlet/holiday-cn) for mainland China and data.gov.sg
+collection 691 (MOM) for Singapore, for this year and next.
+
+When something is new or different it pushes the `holiday-update` branch and opens a pull request
+(or, if Actions can't open PRs in this repo, an issue with a compare link). Review the dates in it,
+then merge: the site updates in about a minute and the app picks it up within a day.
+Nothing is published without that merge.
