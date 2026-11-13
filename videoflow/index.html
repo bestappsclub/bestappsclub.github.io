@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Video Flow – Player &amp; Browser for iPhone</title>
+<meta name="description" content="Video Flow is a calm video browser for iPhone: fewer distractions, tabs with previews, a one-tap quick menu, picture in picture, background audio and on-device AI summaries.">
+<meta name="apple-itunes-app" content="app-id=6759566214">
+<meta property="og:title" content="Video Flow – Player & Browser">
+<meta property="og:description" content="Watch video on the web, without the clutter.">
+<meta property="og:image" content="https://bestappsclub.github.io/videoflow/img/icon.png">
+<link rel="icon" href="img/icon.png">
+<style>
+:root{--bg:#fbfaff;--surface:#ffffff;--text:#15132b;--muted:#625f7a;--line:#e6e3f5;--brand:#6052fc;--brand-soft:#ecebff;--shadow:0 18px 50px rgba(48,36,160,.12)}
+@media (prefers-color-scheme:dark){:root{--bg:#0e0d1a;--surface:#191729;--text:#f2f1fb;--muted:#a3a0bd;--line:#2a2742;--brand:#8a7cff;--brand-soft:#24204a;--shadow:0 18px 50px rgba(0,0,0,.45)}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--brand);text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+nav .home{color:var(--muted);font-size:14px;font-weight:600}
+nav .home:hover{color:var(--text)}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:36px 0 64px}
+.hero img.icon{width:88px;height:88px;border-radius:20px;box-shadow:var(--shadow)}
+h1{font-size:clamp(34px,5vw,54px);line-height:1.06;letter-spacing:-.03em;margin:22px 0 14px}
+h1 span{color:var(--brand)}
+.lead{font-size:19px;color:var(--muted);max-width:30em}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:28px}
+.badge{display:inline-flex;align-items:center;gap:10px;background:#000;color:#fff;border-radius:12px;padding:10px 18px;font-weight:600}
+.badge svg{width:22px;height:22px;fill:#fff}
+.badge small{display:block;font-size:11px;font-weight:500;opacity:.85;line-height:1.1}
+.badge b{display:block;font-size:18px;line-height:1.1}
+.rating{color:var(--muted);font-size:14px}
+.phones{position:relative;height:560px}
+.phones img{position:absolute;width:250px;border-radius:34px;box-shadow:var(--shadow);border:6px solid #111}
+.phones img:first-child{left:4%;top:30px;transform:rotate(-5deg)}
+.phones img:last-child{right:4%;top:0;transform:rotate(4deg)}
+section{padding:56px 0}
+h2{font-size:clamp(26px,3.4vw,36px);letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
+.sub{color:var(--muted);font-size:17px;margin-bottom:32px;max-width:36em}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.f{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px}
+.f i{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--brand-soft);font-style:normal;font-size:21px;margin-bottom:14px}
+.f h3{font-size:17px;margin-bottom:6px}
+.f p{color:var(--muted);font-size:15px}
+.shots{display:flex;gap:18px;overflow-x:auto;padding:6px 2px 18px;scroll-snap-type:x mandatory}
+.shots figure{flex:none;width:230px;scroll-snap-align:start}
+.shots img{width:100%;border-radius:26px;border:1px solid var(--line);box-shadow:var(--shadow);display:block}
+.shots figcaption{font-size:14px;color:var(--muted);margin-top:10px;text-align:center}
+.plus{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.plus ul{list-style:none;display:grid;gap:8px;margin-top:14px;color:var(--muted)}
+.plus li::before{content:"✓";color:var(--brand);font-weight:700;margin-right:10px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600;list-style:none}
+summary::-webkit-details-marker{display:none}
+details p{color:var(--muted);margin-top:10px;font-size:15px}
+footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);font-size:14px;display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between}
+footer nav{padding:0;gap:18px;justify-content:flex-start}
+@media (max-width:860px){.hero{grid-template-columns:1fr;gap:20px;padding-top:12px}.phones{height:440px}.phones img{width:190px;border-width:5px;border-radius:28px}.grid{grid-template-columns:1fr 1fr}.plus{grid-template-columns:1fr}}
+@media (max-width:560px){.grid{grid-template-columns:1fr}.phones{height:380px}.phones img{width:165px}.phones img:first-child{left:0}.phones img:last-child{right:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><a class="home" href="/">← Best Apps Club</a><a href="https://apps.apple.com/app/id6759566214">Download</a></nav>
+
+  <header class="hero">
+    <div>
+      <img class="icon" src="img/icon.png" alt="Video Flow app icon" width="88" height="88">
+      <h1>Watch video on the web, <span>without the clutter.</span></h1>
+      <p class="lead">Video Flow is a calm video browser for iPhone and iPad. Your sites on one start page, tabs with previews, and one floating button for everything else.</p>
+      <div class="cta">
+        <a class="badge" href="https://apps.apple.com/app/id6759566214" aria-label="Download on the App Store">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.65.8-3.33.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.7.71 2.87.69 1.19-.02 1.94-1.08 2.66-2.14.84-1.23 1.18-2.42 1.2-2.48-.03-.01-2.3-.88-2.32-3.54zM14.2 6.1c.6-.73 1.01-1.75.9-2.76-.87.04-1.92.58-2.54 1.31-.56.65-1.05 1.69-.92 2.68.97.08 1.96-.49 2.56-1.23z"/></svg>
+          <span><small>Download on the</small><b>App Store</b></span>
+        </a>
+        <span class="rating">★★★★★ 5.0 on the App Store · Free · 20 languages</span>
+      </div>
+    </div>
+    <div class="phones" aria-hidden="true">
+      <img src="img/01-home.jpg" alt="">
+      <img src="img/03-quick-menu.jpg" alt="">
+    </div>
+  </header>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Everything you need to watch, nothing you don't</h2>
+    <p class="sub">Built for people who just want to press play.</p>
+    <div class="grid">
+      <div class="f"><i>✦</i><h3>One-tap quick menu</h3><p>A floating button over every page: Home, tabs, share, reload and more. Drag it anywhere; it fades away while you watch.</p></div>
+      <div class="f"><i>▦</i><h3>Tabs with previews</h3><p>See every open page as a card. Swipe a card to close it, or tap to jump straight back.</p></div>
+      <div class="f"><i>♪</i><h3>Keeps playing</h3><p>Picture in picture and background audio. A Now Playing bar on the start page lets you pause or return in one tap.</p></div>
+      <div class="f"><i>☰</i><h3>Fewer distractions</h3><p>Built-in content blocking trims page clutter, and the address bar slides away as you scroll.</p></div>
+      <div class="f"><i>★</i><h3>Follow channels, no login</h3><p>Follow the channels you like and get a notification when they post something new.</p></div>
+      <div class="f"><i>✧</i><h3>AI summaries, on device</h3><p>Get the gist of a long video before you watch. Runs privately with Apple Intelligence on supported iPhones.</p></div>
+      <div class="f"><i>⌁</i><h3>Faster typing</h3><p>Site suggestions as you type, www. and .com keys, and Paste and Go for links you copied.</p></div>
+      <div class="f"><i>☾</i><h3>Sleep timer &amp; speed</h3><p>Fall asleep to a video that stops on its own, and set a playback speed that sticks.</p></div>
+      <div class="f"><i>⌂</i><h3>Your start page</h3><p>Pin and reorder your favourite sites, continue where you left off, and open everything from the Home Screen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>See it in action</h2>
+    <p class="sub">Real screens from the app.</p>
+    <div class="shots">
+      <figure><img src="img/01-home.jpg" alt="Start page with a Now Playing bar and favourite sites" loading="lazy"><figcaption>Your start page</figcaption></figure>
+      <figure><img src="img/02-video.jpg" alt="A video page with the address bar hidden" loading="lazy"><figcaption>Just the video</figcaption></figure>
+      <figure><img src="img/03-quick-menu.jpg" alt="The floating quick menu open over a page" loading="lazy"><figcaption>Quick menu</figcaption></figure>
+      <figure><img src="img/04-tabs.jpg" alt="Tab switcher with page previews" loading="lazy"><figcaption>Tabs with previews</figcaption></figure>
+      <figure><img src="img/07-home-dark.jpg" alt="Start page in dark mode" loading="lazy"><figcaption>Dark mode</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="plus">
+      <div>
+        <h2>Free to use. Plus if you want more.</h2>
+        <p class="sub" style="margin:0">Video Flow is free with small ads. One subscription removes them.</p>
+        <ul>
+          <li>No ads anywhere in the app</li>
+          <li>Unlimited AI summaries (free: 3 a day)</li>
+          <li>Cancel anytime in your Apple ID settings</li>
+        </ul>
+      </div>
+      <a class="badge" href="https://apps.apple.com/app/id6759566214"><span><small>Get it free on the</small><b>App Store</b></span></a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Questions</h2>
+    <details><summary>Which devices does it run on?</summary><p>iPhone and iPad with iOS 18 or later. AI summaries need a device that supports Apple Intelligence.</p></details>
+    <details><summary>Do I need to sign in to follow channels?</summary><p>No. Followed channels are kept on your device, and new-video alerts work without an account.</p></details>
+    <details><summary>Is my browsing private?</summary><p>Your history, bookmarks and followed channels stay on your device. AI summaries are made on your iPhone, not on a server. See the <a href="https://bestappsclub.github.io/application/shortVideoLite/privacy.html">privacy policy</a>.</p></details>
+    <details><summary>How do I cancel the subscription?</summary><p>Open Settings on your iPhone, tap your name, then Subscriptions, and choose Video Flow.</p></details>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <span>© 2026 Best Apps Club</span>
+    <nav>
+      <a href="https://bestappsclub.github.io/application/shortVideoLite/support.html">Support</a>
+      <a href="https://bestappsclub.github.io/application/shortVideoLite/privacy.html">Privacy</a>
+      <a href="https://bestappsclub.github.io/application/shortVideoLite/terms.html">Terms</a>
+      <a href="mailto:bestappsclub@gmail.com">bestappsclub@gmail.com</a>
+    </nav>
+  </footer>
+</div>
+</body>
+</html>
