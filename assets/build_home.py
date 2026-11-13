@@ -5,21 +5,27 @@ root = pathlib.Path(__file__).resolve().parent.parent
 apps = json.loads((root / "assets/apps.json").read_text())
 featured = {6759566214: "/videoflow/"}  # apps with their own page here
 # Only apps the owner chose to show (App Store IDs from assets/apps.json). Add IDs here to list more.
-shown = [6758246086, 6758523840, 6759354771, 6759379770, 6758260197, 6758621503]
+shown = [6758246086, 6833516514, 6758523840, 6759354771, 6759379770, 6758260197, 6758621503]
+# Apps still in App Review (not in Apple's public lookup yet). Delete an entry once the app is live
+# and refresh apps.json; the "Coming soon" label goes away with it.
+pending = {6833516514: {"id": 6833516514, "name": "Spotlens: Identify Anything", "genre": "Utilities", "url": "https://apps.apple.com/app/id6833516514"}}
 blurbs = {
  "6758246086": "Live bus arrivals, MRT and Causeway cameras for Singapore.",
  "6758523840": "Point the camera at things and learn new English words. For kids.",
  "6759354771": "Find duplicate photos, large videos and clutter, and free up space.",
  "6759379770": "Record voice notes and get a clean AI summary.",
  "6758260197": "Playful phonics lessons that help kids learn to read.",
- "6758621503": "Make passport, ID and IC photos at home."
+ "6758621503": "Make passport, ID and IC photos at home.",
+ "6833516514": "Point your camera at a plant, product or landmark and find out what it is."
 }
 by_id = {a["id"]: a for a in apps}
+for k, v in pending.items():
+    by_id.setdefault(k, v)
 cards = []
 for i in shown:  # in the owner's order; icons are copied into assets/icons/
     a = by_id[i]
     note = blurbs.get(str(i)) or a["genre"] or ""
-    cards.append(f'''<a class="app" href="{a['url']}"><img src="/assets/icons/{i}.jpg" alt="" width="64" height="64"><span><b>{html.escape(a['name'])}</b><small>{html.escape(note)}</small></span></a>''')
+    cards.append(f'''<a class="app" href="{a['url']}"><img src="/assets/icons/{i}.jpg" alt="" width="64" height="64"><span><b>{html.escape(a['name'])}</b><small>{html.escape(note)}</small>{'<em>Coming soon</em>' if i in pending and i not in {x["id"] for x in apps} else ''}</span></a>''')
 page = f'''<!doctype html>
 <html lang="en">
 <head>
@@ -51,6 +57,7 @@ h3{{font-size:22px;margin-bottom:18px}}
 .app img{{width:56px;height:56px;border-radius:13px;flex:none}}
 .app b{{display:block;font-size:15px;line-height:1.3}}
 .app small{{color:var(--muted);font-size:13px}}
+.app em{{display:inline-block;margin-top:4px;font-style:normal;font-size:11px;font-weight:700;color:var(--brand);background:color-mix(in srgb,var(--brand) 14%,transparent);padding:2px 8px;border-radius:99px}}
 footer{{border-top:1px solid var(--line);margin-top:64px;padding:28px 0 48px;color:var(--muted);font-size:14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}}
 footer a{{color:var(--brand)}}
 @media (max-width:640px){{.feature{{grid-template-columns:auto 1fr}}.feature .btn{{grid-column:1/-1;text-align:center}}.feature img{{width:72px;height:72px}}header{{padding-top:44px}}}}
