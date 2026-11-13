@@ -12,6 +12,7 @@ import datetime as dt
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -28,14 +29,20 @@ SG_NAMES = {
 }
 
 
-def get_json(url):
-    try:
-        with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
-            return json.load(r)
-    except urllib.error.HTTPError as e:
-        if e.code == 404:
-            return None
-        raise
+def get_json(url, tries=5):
+    """GET JSON; None on 404. Backs off on 429/5xx (data.gov.sg rate-limits shared CI IPs)."""
+    for attempt in range(tries):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                return None
+            if e.code in (429, 500, 502, 503, 504) and attempt < tries - 1:
+                wait = int(e.headers.get("Retry-After") or 0) or 10 * (attempt + 1)
+                time.sleep(min(wait, 60))
+                continue
+            raise
 
 
 # ---------- sources ----------
@@ -59,12 +66,17 @@ def fetch_sg_all():
     meta = get_json("https://api-production.data.gov.sg/v2/public/api/collections/691/metadata")
     ids = meta["data"]["collectionMetadata"]["childDatasets"]
     out = {}
-    for rid in ids:
+    for rid in reversed(ids):   # newest datasets are listed last
+        if all(y in out for y in YEARS):
+            break
+        time.sleep(3)
         res = get_json(f"https://data.gov.sg/api/action/datastore_search?resource_id={rid}&limit=100")
         recs = (res or {}).get("result", {}).get("records", [])
         if not recs:
             continue
         year = int(recs[0]["date"][:4])
+        if year < min(YEARS):
+            break                # older than anything we need
         if year not in YEARS:
             continue
         days, unknown = {}, []
@@ -111,13 +123,17 @@ def main():
         path = os.path.join(ROOT, f"{region}-holidays.json")
         data = json.load(open(path, encoding="utf-8"))
         found = {}
-        if region == "cn":
-            for y in YEARS:
-                days, src = fetch_cn(y)
-                if days:
-                    found[y] = (days, src, [])
-        else:
-            found = fetch_sg_all()
+        try:
+            if region == "cn":
+                for y in YEARS:
+                    days, src = fetch_cn(y)
+                    if days:
+                        found[y] = (days, src, [])
+            else:
+                found = fetch_sg_all()
+        except Exception as e:  # a source being down shouldn't fail the whole check
+            report.append(f"- ⚠️ {region}: 这次取不到数据（{e}），下个月会再试")
+            continue
 
         for y in YEARS:
             if y not in found:
