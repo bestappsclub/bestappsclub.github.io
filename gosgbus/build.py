@@ -125,8 +125,8 @@ FAQ = [
     ("How often do times refresh?", "Every few seconds while a stop is open. Times are estimates, so they can jump when a bus speeds up or gets stuck in traffic."),
     ("Does it need internet?", "Yes for live times. Your favourites and the stop list stay on your phone."),
     ("Why did an arrival time change?", "Times are LTA's live estimates. They move when a bus speeds up, gets held at a stop, or hits traffic. Open the bus map to see where the bus actually is."),
-    ("Is GoSG free?", "Yes, with no ads. From GoSG 2.1 there is no paid tier: live times, widgets, the Lock Screen, the Apple Watch app, the MRT planner and up to 10 leave-now alerts are free. In Ask, on-device AI (iPhones with Apple Intelligence) is free and unlimited; cloud AI answers need a free sign-in with your phone number and are limited to 10 a month."),
-    ("Do I need an account?", "No. Bus times, widgets, alerts and the map work without one. Only cloud AI answers in Ask need a free sign-in with your Singapore phone number."),
+    ("Is GoSG free?", "Yes, with no ads. From GoSG 2.1 there is no paid tier: live times, widgets, the Lock Screen, the Apple Watch app, the MRT planner and up to 10 leave-now alerts are free. In Ask, on-device AI (iPhones with Apple Intelligence) is free and unlimited; cloud AI answers need a free sign-in with Apple or Google and are limited to 10 a month."),
+    ("Do I need an account?", "No. Bus times, widgets, alerts and the map work without one. Only cloud AI answers in Ask need a free sign-in with Apple or Google."),
     ("Which devices and languages?", "iPhone and iPad with iOS 17 or later, and Macs with Apple silicon. English, 简体中文, 繁體中文, Bahasa Melayu, தமிழ் and हिन्दी."),
     ("Is there an Apple Watch app?", "Yes, from GoSG 2.1. Your favourite stops and starred buses appear on the watch, and it fetches live times on its own. There is also a watch face complication for your next bus."),
     ("Can I plan MRT trips without signal?", "Yes, from GoSG 2.1. MRT › Plan works out the fastest train route on your iPhone, with changes and time, even underground."),
@@ -219,7 +219,7 @@ def home():
 <section><div class="wrap">
   <h2>At a glance</h2>
   <dl class="glance">
-    <dt>Price</dt><dd>Free, with no ads and no in-app purchases from 2.1: live times, widgets, Lock Screen, Apple Watch, MRT planner, cameras and up to 10 leave-now alerts. In Ask, on-device AI is unlimited; cloud AI: 10 answers a month after a free phone sign-in.</dd>
+    <dt>Price</dt><dd>Free, with no ads and no in-app purchases from 2.1: live times, widgets, Lock Screen, Apple Watch, MRT planner, cameras and up to 10 leave-now alerts. In Ask, on-device AI is unlimited; cloud AI: 10 answers a month after a free sign-in with Apple or Google.</dd>
     <dt>Devices</dt><dd>iPhone and iPad on iOS 17 or later. Macs with Apple silicon via the Mac App Store.</dd>
     <dt>Languages</dt><dd>English, 简体中文, 繁體中文, Bahasa Melayu, தமிழ், हिन्दी</dd>
   </dl>
@@ -302,7 +302,7 @@ def guides():
 <tr><td>Family members</td><td>Language</td><td>6 languages, including 中文, Melayu, தமிழ் and हिन्दी</td></tr>
 </tbody></table>"""),
         ("free", "What is free in GoSG?",
-         "<p>Everything, with no ads. From GoSG 2.1 there is no paid tier: live times, widgets, the Lock Screen, Apple Watch, the MRT planner and up to 10 leave-now alerts. In Ask, on-device AI and answers worked out from bus data are unlimited; cloud AI gives 10 answers a month after a free phone sign-in.</p>"),
+         "<p>Everything, with no ads. From GoSG 2.1 there is no paid tier: live times, widgets, the Lock Screen, Apple Watch, the MRT planner and up to 10 leave-now alerts. In Ask, on-device AI and answers worked out from bus data are unlimited; cloud AI gives 10 answers a month after a free sign-in with Apple or Google.</p>"),
         ("compare", "Compare with the app you use now",
          "<p>Run the five checks above on your own commute with GoSG and the app you use now, for a day each. Other apps may suit you better in some ways; we'd rather you pick the one that works for you. If something in GoSG falls short, tell us in Settings › Send Feedback.</p>"),
     ])
