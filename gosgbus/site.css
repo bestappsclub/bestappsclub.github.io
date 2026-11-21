@@ -150,7 +150,5 @@ footer .fine{margin-top:24px;font-size:13px}
 .w-lock img{border-radius:22px}
 @media (max-width:880px){.wgal{grid-template-columns:1fr}.wrow{grid-template-columns:1fr 1.6fr}}
 @media (max-width:560px){.wrow{grid-template-columns:1fr}.w-s{max-width:200px}}
-.story .grid2{padding:56px 20px;grid-template-columns:.8fr 1.2fr}
+.story .wrap{padding-top:56px;padding-bottom:56px;display:flex;justify-content:center}
 .story video.demo{display:block;width:100%;max-width:330px;aspect-ratio:1080/1920;object-fit:cover;background:#fff;border-radius:28px;border:1px solid var(--line);box-shadow:var(--shadow);justify-self:center}
-.story h2{margin:8px 0 14px}.story .lead{margin-bottom:14px}
-@media (max-width:800px){.story .grid2{grid-template-columns:1fr;gap:28px}}

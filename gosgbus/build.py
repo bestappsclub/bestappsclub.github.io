@@ -164,14 +164,8 @@ def home():
   <div class="phones" aria-hidden="true"><img src="img/hero-list.jpg" alt=""><img src="img/hero-widgets.jpg" alt=""></div>
 </div></section>
 
-<section id="thanks" class="story"><div class="wrap grid2">
+<section id="thanks" class="story"><div class="wrap">
   <video class="demo" src="vid/thank-you.mp4" poster="vid/thank-you.jpg" controls playsinline preload="none" aria-label="A thank-you from the GoSG Bus team"></video>
-  <div>
-    <p class="eyebrow">A note from us</p>
-    <h2>Thank you for trying GoSG.</h2>
-    <p class="lead dark">We built GoSG for one small moment: “When is my bus coming?” Many bus apps fill that moment with ads, or ask you to pay for more. We didn't want that, so GoSG is free, with no ads.</p>
-    <p class="lead dark">It isn't perfect yet. We read every message and keep making it better. Tell us what to fix in Settings › Send Feedback, or <a href="mailto:{EMAIL}">email us</a>. We just want to be useful.</p>
-  </div>
 </div></section>
 
 <section class="ops"><div class="wrap">
