@@ -115,7 +115,7 @@ FAQ = [
     ("How often do times refresh?", "Every few seconds while a stop is open. Times are estimates, so they can jump when a bus speeds up or gets stuck in traffic."),
     ("Does it need internet?", "Yes for live times. Your favourites and the stop list stay on your phone."),
     ("Why did an arrival time change?", "Times are LTA's live estimates. They move when a bus speeds up, gets held at a stop, or hits traffic. Open the bus map to see where the bus actually is."),
-    ("Is GoSG free?", "Yes. Live times, Nearby, Favourites, Search, routes, the bus map, cameras and the MRT map are free, with no ads. GoSG Plus is optional and adds more leave-now alerts and AI answers."),
+    ("Is GoSG free?", "Yes, all of it, with no ads and no account. From GoSG 2.1 there is no paid tier: live times, widgets, the Lock Screen, the Apple Watch app, the MRT planner and up to 10 leave-now alerts are free. AI-written answers in Ask are limited to 5 a day; everything else in Ask is unlimited."),
     ("Do I need an account?", "No. Open the app and use it."),
     ("Which devices and languages?", "iPhone and iPad with iOS 17 or later, and Macs with Apple silicon. English, 简体中文, 繁體中文, Bahasa Melayu, தமிழ் and हिन्दी."),
     ("Is there an Apple Watch app?", "Yes, from GoSG 2.1. Your favourite stops and starred buses appear on the watch, and it fetches live times on its own. There is also a watch face complication for your next bus."),
@@ -205,8 +205,7 @@ def home():
 <section><div class="wrap">
   <h2>At a glance</h2>
   <dl class="glance">
-    <dt>Free</dt><dd>Live times, Nearby, Favourites, Search, routes, bus map, cameras, MRT map, 1 leave-now alert, 5 AI answers a day. No ads.</dd>
-    <dt>GoSG Plus (optional)</dt><dd>Up to 10 leave-now alerts and 50 AI answers a day. Cancel anytime in your Apple Account.</dd>
+    <dt>Price</dt><dd>Free, with no ads and no in-app purchases from 2.1: live times, widgets, Lock Screen, Apple Watch, MRT planner, cameras and up to 10 leave-now alerts. AI-written answers in Ask: 5 a day.</dd>
     <dt>Devices</dt><dd>iPhone and iPad on iOS 17 or later. Macs with Apple silicon via the Mac App Store.</dd>
     <dt>Languages</dt><dd>English, 简体中文, 繁體中文, Bahasa Melayu, தமிழ், हिन्दी</dd>
   </dl>
@@ -281,7 +280,7 @@ def guides():
 <tr><td>Family members</td><td>Language</td><td>6 languages, including 中文, Melayu, தமிழ் and हिन्दी</td></tr>
 </tbody></table>"""),
         ("free", "What is free in GoSG?",
-         "<p>All live times, Nearby, Favourites, Search, routes, the bus map, cameras and the MRT map, with no ads and no account. GoSG Plus is optional: 10 leave-now alerts instead of 1, and 50 AI answers a day instead of 5.</p>"),
+         "<p>Everything, with no ads and no account. From GoSG 2.1 there is no paid tier: live times, widgets, the Lock Screen, Apple Watch, the MRT planner and up to 10 leave-now alerts. Ask gives 5 AI-written answers a day; answers worked out from bus data are unlimited.</p>"),
         ("compare", "Compare with the app you use now",
          '<p>See <a href="gosg-vs-bussing.html">GoSG Bus vs BusSing</a> for a side-by-side, including where BusSing is ahead.</p>'),
     ])
@@ -302,7 +301,7 @@ def guides():
 <tr><td>Languages</td><td>6 (English, 简体, 繁體, Melayu, தமிழ், हिन्दी)</td><td>English</td></tr>
 <tr><td>Minimum iOS</td><td>iOS 17</td><td>iOS 18</td></tr>
 <tr><td>Ads</td><td>None</td><td>None</td></tr>
-<tr><td>Paid tier</td><td>GoSG Plus (optional)</td><td>BusSing Express (optional)</td></tr>
+<tr><td>Paid tier</td><td>None, all free (from 2.1)</td><td>BusSing Express (optional)</td></tr>
 </tbody></table>"""),
         ("bussing", "Where BusSing is better",
          "<p>BusSing has many more ratings on the App Store and ships updates often. Its Apple Watch app and offline MRT planner have been out longer; GoSG's arrive in 2.1. If you want a single-language, polished app with a long track record, BusSing is a safe pick.</p>"),
@@ -332,8 +331,8 @@ def guides():
     article("how-to-use-gosg", *GUIDES[5][1:3], GUIDES[5][3], [
         ("arrivals", "Live arrivals and the bus map", "<p>Nearby stops are on the first screen. Tap a stop to open it and see the next three buses of every service, then tap a bus to follow it on the map.</p>" + clip("arrivals", "../")),
         ("widget", "Widgets and the Lock Screen", "<p>Add the widget in small, medium or large and pick a stop for each. Open a stop and tap 🔒 to follow it on the Lock Screen.</p>" + clip("add-widget", "../") + clip("widgets", "../") + clip("lock-screen", "../")),
-        ("alerts", "Leave-now alerts", "<p>On Favourites, turn on alerts and pick your bus and your usual times. Free includes one alert; GoSG Plus has ten.</p>" + clip("leave-now", "../")),
-        ("ask", "Ask", "<p>Type a question in plain words. GoSG answers with buses, where to change and the time door to door. Free includes five answers a day.</p>" + clip("ask", "../")),
+        ("alerts", "Leave-now alerts", "<p>On Favourites, turn on alerts and pick your bus and your usual times. You can have up to ten, free.</p>" + clip("leave-now", "../")),
+        ("ask", "Ask", "<p>Type a question in plain words. GoSG answers with buses, where to change and the time door to door. Up to five AI-written answers a day; answers worked out from bus data are unlimited.</p>" + clip("ask", "../")),
         ("cameras", "Causeway cameras", "<p>Open Search to see the Woodlands and Tuas checkpoint cameras before you head to JB.</p>" + clip("cameras", "../")),
         ("mrt", "MRT stations", "<p>The MRT tab shows every station and exit. Switch to the list to find a station by name.</p>" + clip("mrt", "../")),
         ("traffic", "Traffic on the map", "<p>Traffic is off by default. Open the map, tap the map-style button and turn on <b>Show traffic on map</b>. Accidents and breakdowns appear as pins you can tap.</p>"),
