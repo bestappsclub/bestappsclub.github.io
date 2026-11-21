@@ -141,3 +141,13 @@ footer .fine{margin-top:24px;font-size:13px}
 .bt-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin:0 4px 0 8px}
 .bt-dot.seats{background:#2f9e1a}.bt-dot.stand{background:#d98a00}.bt-dot.full{background:#d33}
 @media (max-width:560px){.bt-table thead th:nth-child(4),.bt-table td:nth-child(4){display:none}.bt-hours{font-size:12px;white-space:normal}.bt-panel{padding:14px}}
+.wgal{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;margin-top:22px;align-items:start}
+.wgal figure{margin:0}
+.wgal img{display:block;width:100%;border-radius:26px;box-shadow:var(--shadow);background:#111}
+.wgal figcaption{margin-top:8px;color:var(--muted);font-size:14px}
+.wgal figcaption b{color:var(--text);margin-right:6px}
+.wcol{display:flex;flex-direction:column;gap:20px}
+.wrow{display:grid;grid-template-columns:.8fr 1.6fr;gap:20px;align-items:start}
+.w-lock img{border-radius:22px}
+@media (max-width:880px){.wgal{grid-template-columns:1fr}.wrow{grid-template-columns:1fr 1.6fr}}
+@media (max-width:560px){.wrow{grid-template-columns:1fr}.w-s{max-width:200px}}

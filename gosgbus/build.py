@@ -40,7 +40,9 @@ GUIDES = [
 
 # Screen recordings from the iOS simulator (GoSG 2.1), made by busSgUITests/DemoRecordings.swift.
 CLIPS = {
-    "arrivals": ("Live arrivals", "Open a nearby stop, then tap a bus to see where it is on the map."),
+    "arrivals": ("Live arrivals", "Tap a nearby stop to open it, then tap a bus to see where it is on the map."),
+    "widgets": ("Widgets in three sizes", "Touch and hold the widget to switch size, or Edit Widget to pick another stop. Tap ↻ for fresh times."),
+    "lock-screen": ("Your stop on the Lock Screen", "Open a stop and tap 🔒. The next 5 buses count down on the Lock Screen and in the Dynamic Island."),
     "widget-star": ("Pick buses for the widget", "Touch and hold a bus: Show in widget, or Track on Lock Screen."),
     "add-widget": ("Add the Home Screen widget", "Touch and hold the Home Screen, tap Edit › Add Widget, search GoSG Bus."),
     "leave-now": ("Leave-now alerts", "Favourites › turn on alerts. GoSG tells you when to walk out the door."),
@@ -123,9 +125,9 @@ FAQ = [
 
 # (eyebrow, heading, one sentence, clip, guide slug) — one demo video per feature, like a store preview.
 FEATURES = [
-    ("Live arrivals", "Your stop. Already open.", "Nearby stops are on the first screen with the next three buses for every service. Tap a bus to see where it is on the map.", "arrivals", "best-sg-bus-app"),
-    ("Home Screen widgets <span class=tag>New in 2.1</span>", "Your usual stop. One glance away.", "Put a favourite stop on the Home Screen, or let the widget pick the favourite nearest to you. Tap ↻ for fresh times.", "add-widget", "bus-widget-iphone"),
-    ("Lock Screen &amp; Dynamic Island <span class=tag>New in 2.1</span>", "Your bus. Always in view.", "Touch and hold a bus to track it. It counts down on the Lock Screen and in the Dynamic Island while you get ready.", "widget-star", "bus-widget-iphone"),
+    ("Live arrivals", "Your stop. Already open.", "Nearby stops are on the first screen. Tap one for the next three buses of every service, then tap a bus to see where it is on the map.", "arrivals", "best-sg-bus-app"),
+    ("Home Screen widgets <span class=tag>New in 2.1</span>", "Your usual stop. One glance away.", "Small, medium or large, each on the favourite stop you choose, or the one nearest you. Tap ↻ for fresh times; tap the widget to open your favourites.", "widgets", "bus-widget-iphone"),
+    ("Lock Screen &amp; Dynamic Island <span class=tag>New in 2.1</span>", "Your stop. Always in view.", "Open a stop and tap 🔒. The next five buses count down on the Lock Screen and in the Dynamic Island while you get ready, even with GoSG closed.", "lock-screen", "bus-widget-iphone"),
     ("Leave-now alerts", "Walk out. Right on time.", "Pick your bus and your usual times. GoSG tells you when it's time to leave, so you're not waiting at the stop.", "leave-now", None),
     ("Ask", "Just ask. Get there.", "“How do I get to VivoCity?” “Last 52 tonight?” Get the buses, where to change and the time door to door. Or ask Siri.", "ask", "last-bus-singapore"),
 ]
@@ -149,7 +151,7 @@ def home():
     <p class="note" style="margin-top:14px"><a href="bus-times.html" style="color:#8fe36f;font-weight:600">Check live bus times online →</a></p>
     <div class="chips"><span>No ads</span><span>No account</span><span>6 languages</span></div>
   </div>
-  <div class="phones" aria-hidden="true"><img src="img/1-nearby.jpg" alt=""><img src="img/3-busmap.jpg" alt=""></div>
+  <div class="phones" aria-hidden="true"><img src="img/hero-list.jpg" alt=""><img src="img/hero-widgets.jpg" alt=""></div>
 </div></section>
 
 <section class="ops"><div class="wrap">
@@ -160,6 +162,23 @@ def home():
 <section id="features"><div class="wrap">
   <p class="eyebrow">A better everyday commute</p><h2>Everything for the bus ride, nothing extra</h2>
   {feats}
+</div></section>
+
+<section id="widgets" class="more-grid"><div class="wrap">
+  <p class="eyebrow">Widgets <span class=tag>New in 2.1</span></p>
+  <h2>Three sizes. Your stops.</h2>
+  <p class="lead dark">Pick the size that fits your Home Screen. Each widget can show a different favourite stop, only the buses you take, or follow you to the nearest favourite.</p>
+  <div class="wgal">
+    <figure class="w-l"><img src="img/widget-large.jpg" alt="Large GoSG widget: eight buses at Dhoby Ghaut Stn with the next three times each" loading="lazy"><figcaption><b>Large</b>8 buses, next 3 times each</figcaption></figure>
+    <div class="wcol">
+      <figure class="w-m"><img src="img/widget-medium.jpg" alt="Medium GoSG widget: five buses side by side" loading="lazy"><figcaption><b>Medium</b>5 buses side by side</figcaption></figure>
+      <div class="wrow">
+        <figure class="w-s"><img src="img/widget-small.jpg" alt="Small GoSG widget: three buses" loading="lazy"><figcaption><b>Small</b>Your next 3 buses</figcaption></figure>
+        <figure class="w-lock"><img src="img/lock-stop.jpg" alt="Lock Screen Live Activity: five buses counting down" loading="lazy"><figcaption><b>Lock Screen</b>Live countdowns for a whole stop</figcaption></figure>
+      </div>
+    </div>
+  </div>
+  <p><a class="more" href="guides/bus-widget-iphone.html">How to add the widget →</a></p>
 </div></section>
 
 <section id="how"><div class="wrap">
@@ -295,8 +314,9 @@ def guides():
     article("bus-widget-iphone", *GUIDES[2][1:3], GUIDES[2][3], [
         ("first", "First, star a stop", "<p>Open GoSG, find your stop on Nearby or Search, and tap the ☆. The widget shows your favourite stops, so it stays empty until you have one.</p>"),
         ("add", "Add the widget", '<ol class="steps"><li>Touch and hold an empty spot on the Home Screen until the apps jiggle.</li><li>Tap <b>Edit</b>, then <b>Add Widget</b>.</li><li>Search for <b>GoSG Bus</b> and pick small, medium or large.</li><li>Touch and hold the widget, tap <b>Edit Widget</b>, and choose which stop it shows.</li></ol><p>Widgets and Live Activities arrive in GoSG 2.1.</p>' + clip("add-widget", "../")),
+        ("sizes", "Three sizes, any favourite stop", '<p>Touch and hold the widget to switch between small, medium and large, or tap <b>Edit Widget</b> to pick which favourite stop it shows. Turn on <b>Use Nearest Favourite</b> and it follows you. Tap ↻ for fresh times, or tap the widget to open your favourites.</p>' + clip("widgets", "../")),
         ("pick", "Show only the buses you take", '<p>Open your stop, touch and hold a bus, and tap <b>Show in widget</b>. The widget then lists only the starred buses for that stop. With none starred, it shows them all.</p>' + clip("widget-star", "../")),
-        ("lock", "Lock Screen and Dynamic Island", "<p>Touch and hold a bus and tap <b>Track on Lock Screen</b>. It counts down on your Lock Screen and in the Dynamic Island, even when GoSG is closed. You can also say “Track my bus with GoSG” to Siri.</p>"),
+        ("lock", "Lock Screen and Dynamic Island", "<p>Open a stop and tap 🔒 to follow the whole stop: the next five buses count down on your Lock Screen and in the Dynamic Island, even when GoSG is closed. To follow just one bus, touch and hold it and tap <b>Track on Lock Screen</b>, or say “Track my bus with GoSG” to Siri.</p>" + clip("lock-screen", "../")),
         ("battery", "Does it drain the battery?", "<p>The widget fetches once and then counts down on its own, refreshing every few minutes. It doesn't poll every second.</p>"),
     ])
     article("causeway-traffic-cameras", *GUIDES[3][1:3], GUIDES[3][3], [
@@ -310,8 +330,8 @@ def guides():
         ("note", "Holidays and eves", "<p>Last bus times follow the operator's published timetable. On eves of public holidays some services run later; LTA's live times will show the extra buses when they're on the road.</p>"),
     ])
     article("how-to-use-gosg", *GUIDES[5][1:3], GUIDES[5][3], [
-        ("arrivals", "Live arrivals and the bus map", "<p>Nearby stops are on the first screen. Tap a stop for the next three buses of every service, then tap a bus to follow it on the map.</p>" + clip("arrivals", "../")),
-        ("widget", "Widgets and the Lock Screen", "<p>Touch and hold a bus to pick it for the widget or to track it on the Lock Screen and in the Dynamic Island.</p>" + clip("widget-star", "../") + clip("add-widget", "../")),
+        ("arrivals", "Live arrivals and the bus map", "<p>Nearby stops are on the first screen. Tap a stop to open it and see the next three buses of every service, then tap a bus to follow it on the map.</p>" + clip("arrivals", "../")),
+        ("widget", "Widgets and the Lock Screen", "<p>Add the widget in small, medium or large and pick a stop for each. Open a stop and tap 🔒 to follow it on the Lock Screen.</p>" + clip("add-widget", "../") + clip("widgets", "../") + clip("lock-screen", "../")),
         ("alerts", "Leave-now alerts", "<p>On Favourites, turn on alerts and pick your bus and your usual times. Free includes one alert; GoSG Plus has ten.</p>" + clip("leave-now", "../")),
         ("ask", "Ask", "<p>Type a question in plain words. GoSG answers with buses, where to change and the time door to door. Free includes five answers a day.</p>" + clip("ask", "../")),
         ("cameras", "Causeway cameras", "<p>Open Search to see the Woodlands and Tuas checkpoint cameras before you head to JB.</p>" + clip("cameras", "../")),
