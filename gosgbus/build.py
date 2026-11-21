@@ -34,7 +34,32 @@ GUIDES = [
      "Live checkpoint camera photos, right next to your bus times.", "Travel tips"),
     ("last-bus-singapore", "How to check the last bus in Singapore",
      "Find first and last bus times for any service at your stop.", "Bus basics"),
+    ("how-to-use-gosg", "How to use GoSG Bus, in short videos",
+     "Arrivals, widgets, leave-now alerts, Ask, Causeway cameras, MRT and traffic, each in a few seconds.", "How-to"),
 ]
+
+# Screen recordings from the iOS simulator (GoSG 2.1), made by busSgUITests/DemoRecordings.swift.
+CLIPS = {
+    "arrivals": ("Live arrivals", "Open a nearby stop, then tap a bus to see where it is on the map."),
+    "widget-star": ("Pick buses for the widget", "Touch and hold a bus: Show in widget, or Track on Lock Screen."),
+    "add-widget": ("Add the Home Screen widget", "Touch and hold the Home Screen, tap Edit › Add Widget, search GoSG Bus."),
+    "leave-now": ("Leave-now alerts", "Favourites › turn on alerts. GoSG tells you when to walk out the door."),
+    "ask": ("Just ask", "Type a question like “How do I get to VivoCity?” and get buses, changes and time."),
+    "cameras": ("Causeway cameras", "Search shows Woodlands and Tuas checkpoint photos. Swipe for the next one."),
+    "mrt": ("MRT stations", "The MRT tab has every station and exit, as a map or a list."),
+}
+
+
+def clip(name, up=""):
+    t, c = CLIPS[name]
+    return (f'<figure class="clip"><video src="{up}vid/{name}.mp4" poster="{up}vid/{name}.jpg" muted loop playsinline preload="none" '
+            f'aria-label="{html.escape(t)}: {html.escape(c)}"></video><figcaption><b>{t}</b>{c}</figcaption></figure>')
+
+
+# Plays a clip only while it is on screen, so the page doesn't download 8 videos at once.
+PLAY_IN_VIEW = """<script>(()=>{const v=document.querySelectorAll('video[preload=none]');if(!v.length)return;
+const io=new IntersectionObserver(es=>es.forEach(e=>{const x=e.target;if(e.isIntersecting){x.play().catch(()=>{})}else{x.pause()}}),{threshold:.35});
+v.forEach(x=>io.observe(x))})()</script>"""
 
 
 def page(path, title, desc, body, *, h_nav=True, schema=None):
@@ -72,6 +97,7 @@ def page(path, title, desc, body, *, h_nav=True, schema=None):
   <div><b>Product</b><a href="{up}index.html#features">Features</a><a href="{up}index.html#faq">FAQ</a><a href="{SUPPORT}">Support</a><a href="mailto:{EMAIL}">Contact</a></div>
   <div><b>Legal</b><a href="{PRIVACY}">Privacy policy</a><a href="{TERMS}">Terms of use</a></div>
 </div><div class="wrap fine">© 2026 Best Apps Club · Bus data: LTA DataMall · Camera images: data.gov.sg</div></footer>
+{PLAY_IN_VIEW if "<video" in body else ""}
 </body>
 </html>
 """
@@ -84,6 +110,7 @@ FAQ = [
     ("Where do the bus times come from?", "From LTA DataMall, the Land Transport Authority's official data, for SBS Transit, SMRT, Tower Transit and Go-Ahead buses."),
     ("How often do times refresh?", "Every few seconds while a stop is open. Times are estimates, so they can jump when a bus speeds up or gets stuck in traffic."),
     ("Does it need internet?", "Yes for live times. Your favourites and the stop list stay on your phone."),
+    ("Why did an arrival time change?", "Times are LTA's live estimates. They move when a bus speeds up, gets held at a stop, or hits traffic. Open the bus map to see where the bus actually is."),
     ("Is GoSG free?", "Yes. Live times, Nearby, Favourites, Search, routes, the bus map, cameras and the MRT map are free, with no ads. GoSG Plus is optional and adds more leave-now alerts and AI answers."),
     ("Do I need an account?", "No. Open the app and use it."),
     ("Which devices and languages?", "iPhone and iPad with iOS 17 or later, and Macs with Apple silicon. English, 简体中文, 繁體中文, Bahasa Melayu, தமிழ் and हिन्दी."),
@@ -91,19 +118,22 @@ FAQ = [
     ("How do I report a problem?", f"Use Settings › Send feedback in the app, or email {EMAIL}."),
 ]
 
+# (eyebrow, heading, one sentence, clip, guide slug) — one demo video per feature, like a store preview.
 FEATURES = [
-    ("Live arrivals", "Open the app and the stops around you are already there, with the next three buses for every service and whether there are seats.", "1-nearby.jpg", "best-sg-bus-app"),
-    ("Widgets and Lock Screen <span class=tag>New in 2.1</span>", "Your favourite stop on the Home Screen. The bus you're waiting for counting down on the Lock Screen and in the Dynamic Island.", "2-favorites.jpg", "bus-widget-iphone"),
-    ("Live bus map", "Tap a bus to see where it is and how many stops away. Switch on traffic, and see accidents and breakdowns on your route.", "3-busmap.jpg", None),
-    ("Just ask", "“How do I get to VivoCity?” “Last 52 tonight?” Get the buses, where to change and the time door to door. Or ask Siri.", "4-ask.jpg", "last-bus-singapore"),
+    ("Live arrivals", "Your stop. Already open.", "Nearby stops are on the first screen with the next three buses for every service. Tap a bus to see where it is on the map.", "arrivals", "best-sg-bus-app"),
+    ("Home Screen widgets <span class=tag>New in 2.1</span>", "Your usual stop. One glance away.", "Put a favourite stop on the Home Screen, or let the widget pick the favourite nearest to you. Tap ↻ for fresh times.", "add-widget", "bus-widget-iphone"),
+    ("Lock Screen &amp; Dynamic Island <span class=tag>New in 2.1</span>", "Your bus. Always in view.", "Touch and hold a bus to track it. It counts down on the Lock Screen and in the Dynamic Island while you get ready.", "widget-star", "bus-widget-iphone"),
+    ("Leave-now alerts", "Walk out. Right on time.", "Pick your bus and your usual times. GoSG tells you when it's time to leave, so you're not waiting at the stop.", "leave-now", None),
+    ("Ask", "Just ask. Get there.", "“How do I get to VivoCity?” “Last 52 tonight?” Get the buses, where to change and the time door to door. Or ask Siri.", "ask", "last-bus-singapore"),
 ]
 
 
 def home():
     feats = ""
-    for i, (t, d, img, link) in enumerate(FEATURES):
+    for i, (eb, h, d, name, link) in enumerate(FEATURES):
         more = f'<a class="more" href="guides/{link}.html">Read the guide →</a>' if link else ""
-        feats += f'<div class="row{" flip" if i % 2 else ""}"><div><h3>{t}</h3><p>{d}</p>{more}</div><img src="img/{img}" alt="" loading="lazy"></div>'
+        feats += (f'<div class="row{" flip" if i % 2 else ""}"><div><p class="eyebrow">{eb}</p><h3>{h}</h3><p>{d}</p>{more}</div>'
+                  f'<video class="demo" src="vid/{name}.mp4" poster="vid/{name}.jpg" muted loop playsinline preload="none" aria-label="{html.escape(CLIPS[name][0])} demo"></video></div>')
     faq = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in FAQ)
     cards = "".join(f'<a class="card" href="guides/{s}.html"><small>{c}</small><b>{t}</b><span>{d}</span></a>' for s, t, d, c in GUIDES[:3])
     body = f"""
@@ -124,14 +154,24 @@ def home():
 </div></section>
 
 <section id="features"><div class="wrap">
-  <p class="eyebrow">Features</p><h2>Everything for the bus ride, nothing extra</h2>
+  <p class="eyebrow">A better everyday commute</p><h2>Everything for the bus ride, nothing extra</h2>
   {feats}
+</div></section>
+
+<section id="how"><div class="wrap">
+  <div class="head"><h2>And on the road</h2><a href="guides/how-to-use-gosg.html">All how-to videos →</a></div>
+  <div class="clips">{clip("cameras")}{clip("mrt")}</div>
+</div></section>
+
+<section class="more-grid"><div class="wrap narrow">
+  <p class="eyebrow">Privacy</p><h2>Your commute is your business.</h2>
+  <p class="lead dark">No ads and no account. Your favourites stay on your iPhone, and your location is used on the device to find stops near you. It isn't sent to us.</p>
 </div></section>
 
 <section class="more-grid"><div class="wrap">
   <h2>And there's more on board</h2>
   <div class="grid4">
-    <div class="f"><i>⏰</i><h3>Leave-now alerts</h3><p>Pick your bus and your usual times. GoSG tells you when to walk out the door.</p></div>
+    <div class="f"><i>🔔</i><h3>Get-off alerts <span class=tag>2.1</span></h3><p>Pick your stop on the bus map. GoSG nudges you 2 stops before, and again at the stop before yours.</p></div>
     <div class="f"><i>🚦</i><h3>Causeway cameras</h3><p>Woodlands and Tuas checkpoint photos before you head to JB. <a href="guides/causeway-traffic-cameras.html">How it works</a></p></div>
     <div class="f"><i>🚇</i><h3>MRT map</h3><p>Every station and exit on one map, with directions in Apple Maps.</p></div>
     <div class="f"><i>🗣️</i><h3>Siri</h3><p>"When's my next bus?" "Track my bus." "Any traffic incidents near me?"</p></div>
@@ -231,7 +271,8 @@ def guides():
 <tr><td>Apple Watch app</td><td>Not yet</td><td>✓</td></tr>
 <tr><td>Offline MRT routing</td><td>MRT map (online)</td><td>✓</td></tr>
 <tr><td>Plan a trip by asking</td><td>✓ Ask tab and Siri</td><td>Directions</td></tr>
-<tr><td>Leave-now alerts at set times</td><td>✓</td><td>Alight reminders</td></tr>
+<tr><td>Leave-now alerts at set times</td><td>✓</td><td>–</td></tr>
+<tr><td>Get-off (alight) alerts</td><td>✓ (from 2.1)</td><td>✓</td></tr>
 <tr><td>Bus map with traffic incidents</td><td>✓</td><td>Bus progress with traffic</td></tr>
 <tr><td>Causeway cameras</td><td>✓</td><td>✓</td></tr>
 <tr><td>Languages</td><td>6 (English, 简体, 繁體, Melayu, தமிழ், हिन्दी)</td><td>English</td></tr>
@@ -248,19 +289,29 @@ def guides():
     ], disclosure=True)
     article("bus-widget-iphone", *GUIDES[2][1:3], GUIDES[2][3], [
         ("first", "First, star a stop", "<p>Open GoSG, find your stop on Nearby or Search, and tap the ☆. The widget shows your favourite stops, so it stays empty until you have one.</p>"),
-        ("add", "Add the widget", '<ol class="steps"><li>Touch and hold an empty spot on the Home Screen until the apps jiggle.</li><li>Tap <b>Edit</b>, then <b>Add Widget</b>.</li><li>Search for <b>GoSG Bus</b> and pick small, medium or large.</li><li>Touch and hold the widget, tap <b>Edit Widget</b>, and choose which stop it shows.</li></ol><p>Widgets and Live Activities arrive in GoSG 2.1.</p>'),
-        ("lock", "Lock Screen and Dynamic Island", "<p>Open a stop and tap the bell on a bus to track it. It counts down on your Lock Screen and in the Dynamic Island, even when GoSG is closed. You can also say “Track my bus with GoSG” to Siri.</p>"),
+        ("add", "Add the widget", '<ol class="steps"><li>Touch and hold an empty spot on the Home Screen until the apps jiggle.</li><li>Tap <b>Edit</b>, then <b>Add Widget</b>.</li><li>Search for <b>GoSG Bus</b> and pick small, medium or large.</li><li>Touch and hold the widget, tap <b>Edit Widget</b>, and choose which stop it shows.</li></ol><p>Widgets and Live Activities arrive in GoSG 2.1.</p>' + clip("add-widget", "../")),
+        ("pick", "Show only the buses you take", '<p>Open your stop, touch and hold a bus, and tap <b>Show in widget</b>. The widget then lists only the starred buses for that stop. With none starred, it shows them all.</p>' + clip("widget-star", "../")),
+        ("lock", "Lock Screen and Dynamic Island", "<p>Touch and hold a bus and tap <b>Track on Lock Screen</b>. It counts down on your Lock Screen and in the Dynamic Island, even when GoSG is closed. You can also say “Track my bus with GoSG” to Siri.</p>"),
         ("battery", "Does it drain the battery?", "<p>The widget fetches once and then counts down on its own, refreshing every few minutes. It doesn't poll every second.</p>"),
     ])
     article("causeway-traffic-cameras", *GUIDES[3][1:3], GUIDES[3][3], [
-        ("where", "Where to find the cameras", "<p>Open <b>Search</b>: the checkpoint cameras are at the top. They also appear on bus stops for Causeway services such as the CW buses, 160, 170 and 950.</p>"),
+        ("where", "Where to find the cameras", "<p>Open <b>Search</b>: the checkpoint cameras are at the top. They also appear on bus stops for Causeway services such as the CW buses, 160, 170 and 950.</p>" + clip("cameras", "../")),
         ("which", "Which cameras", "<p>Woodlands Causeway and the Tuas Second Link, from the public traffic camera feed on data.gov.sg. Photos update every few minutes; pull down to refresh.</p>"),
         ("share", "Share with family", "<p>Tap Share on a camera to send the photo with a caption, so the people waiting for you know what the jam looks like.</p>"),
     ])
     article("last-bus-singapore", *GUIDES[4][1:3], GUIDES[4][3], [
         ("details", "Turn on arrival details", "<p>Go to <b>Settings › Show arrival details</b>. Each service then shows its destination, how often it comes, and first and last bus times for your stop.</p>"),
-        ("ask", "Or just ask", "<p>Open the <b>Ask</b> tab and type “Last 52 tonight?” or “When's the first 14 tomorrow?”. GoSG answers for the stop you're at or the one you name.</p>"),
+        ("ask", "Or just ask", "<p>Open the <b>Ask</b> tab and type “Last 52 tonight?” or “When's the first 14 tomorrow?”. GoSG answers for the stop you're at or the one you name.</p>" + clip("ask", "../")),
         ("note", "Holidays and eves", "<p>Last bus times follow the operator's published timetable. On eves of public holidays some services run later; LTA's live times will show the extra buses when they're on the road.</p>"),
+    ])
+    article("how-to-use-gosg", *GUIDES[5][1:3], GUIDES[5][3], [
+        ("arrivals", "Live arrivals and the bus map", "<p>Nearby stops are on the first screen. Tap a stop for the next three buses of every service, then tap a bus to follow it on the map.</p>" + clip("arrivals", "../")),
+        ("widget", "Widgets and the Lock Screen", "<p>Touch and hold a bus to pick it for the widget or to track it on the Lock Screen and in the Dynamic Island.</p>" + clip("widget-star", "../") + clip("add-widget", "../")),
+        ("alerts", "Leave-now alerts", "<p>On Favourites, turn on alerts and pick your bus and your usual times. Free includes one alert; GoSG Plus has ten.</p>" + clip("leave-now", "../")),
+        ("ask", "Ask", "<p>Type a question in plain words. GoSG answers with buses, where to change and the time door to door. Free includes five answers a day.</p>" + clip("ask", "../")),
+        ("cameras", "Causeway cameras", "<p>Open Search to see the Woodlands and Tuas checkpoint cameras before you head to JB.</p>" + clip("cameras", "../")),
+        ("mrt", "MRT stations", "<p>The MRT tab shows every station and exit. Switch to the list to find a station by name.</p>" + clip("mrt", "../")),
+        ("traffic", "Traffic on the map", "<p>Traffic is off by default. Open the map, tap the map-style button and turn on <b>Show traffic on map</b>. Accidents and breakdowns appear as pins you can tap.</p>"),
     ])
     cards = "".join(f'<a class="card" href="{s}.html"><small>{c}</small><b>{t}</b><span>{d}</span></a>' for s, t, d, c in GUIDES)
     page("guides/index.html", "Singapore bus guides & app comparisons | GoSG Bus",
