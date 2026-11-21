@@ -79,9 +79,21 @@ def page(path, title, desc, body, *, h_nav=True, schema=None):
 <meta name="description" content="{html.escape(desc)}">
 <link rel="canonical" href="{canonical}">
 <meta name="apple-itunes-app" content="app-id=6758246086">
+<meta name="robots" content="index,follow,max-image-preview:large,max-video-preview:-1">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GoSG Bus">
+<meta property="og:url" content="{canonical}">
+<meta property="og:locale" content="en_SG">
 <meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}">
-<meta property="og:image" content="{BASE}img/icon.jpg">
+<meta property="og:image" content="{BASE}img/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{html.escape(title)}">
+<meta name="twitter:description" content="{html.escape(desc)}">
+<meta name="twitter:image" content="{BASE}img/og-card.jpg">
 <link rel="icon" href="{up}img/icon.jpg">
 <link rel="stylesheet" href="{up}site.css">
 {ld}
@@ -115,8 +127,8 @@ FAQ = [
     ("How often do times refresh?", "Every few seconds while a stop is open. Times are estimates, so they can jump when a bus speeds up or gets stuck in traffic."),
     ("Does it need internet?", "Yes for live times. Your favourites and the stop list stay on your phone."),
     ("Why did an arrival time change?", "Times are LTA's live estimates. They move when a bus speeds up, gets held at a stop, or hits traffic. Open the bus map to see where the bus actually is."),
-    ("Is GoSG free?", "Yes, all of it, with no ads and no account. From GoSG 2.1 there is no paid tier: live times, widgets, the Lock Screen, the Apple Watch app, the MRT planner and up to 10 leave-now alerts are free. AI-written answers in Ask are limited to 5 a day; everything else in Ask is unlimited."),
-    ("Do I need an account?", "No. Open the app and use it."),
+    ("Is GoSG free?", "Yes, with no ads. From GoSG 2.1 there is no paid tier: live times, widgets, the Lock Screen, the Apple Watch app, the MRT planner and up to 10 leave-now alerts are free. In Ask, on-device AI (iPhones with Apple Intelligence) is free and unlimited; cloud AI answers need a free sign-in with your phone number and are limited to 10 a month."),
+    ("Do I need an account?", "No. Bus times, widgets, alerts and the map work without one. Only cloud AI answers in Ask need a free sign-in with your Singapore phone number."),
     ("Which devices and languages?", "iPhone and iPad with iOS 17 or later, and Macs with Apple silicon. English, 简体中文, 繁體中文, Bahasa Melayu, தமிழ் and हिन्दी."),
     ("Is there an Apple Watch app?", "Yes, from GoSG 2.1. Your favourite stops and starred buses appear on the watch, and it fetches live times on its own. There is also a watch face complication for your next bus."),
     ("Can I plan MRT trips without signal?", "Yes, from GoSG 2.1. MRT › Plan works out the fastest train route on your iPhone, with changes and time, even underground."),
@@ -149,9 +161,19 @@ def home():
     <p class="lead">Live arrival times for every bus stop in Singapore. Know when to leave, see where your bus is, and plan the trip by just asking.</p>
     <div class="cta">{badge("gosgbus-hero")}<span class="note">Free · iPhone &amp; iPad · iOS 17+</span></div>
     <p class="note" style="margin-top:14px"><a href="bus-times.html" style="color:var(--brand);font-weight:600">Check live bus times online →</a></p>
-    <div class="chips"><span>No ads</span><span>No account</span><span>6 languages</span></div>
+    <div class="chips"><span>Free</span><span>No ads</span><span>6 languages</span></div>
   </div>
   <div class="phones" aria-hidden="true"><img src="img/hero-list.jpg" alt=""><img src="img/hero-widgets.jpg" alt=""></div>
+</div></section>
+
+<section id="thanks" class="story"><div class="wrap grid2">
+  <video class="demo" src="vid/thank-you.mp4" poster="vid/thank-you.jpg" controls playsinline preload="none" aria-label="A thank-you from the GoSG Bus team"></video>
+  <div>
+    <p class="eyebrow">A note from us</p>
+    <h2>Thank you for trying GoSG.</h2>
+    <p class="lead dark">We built GoSG for one small moment: “When is my bus coming?” Many bus apps fill that moment with ads, or ask you to pay for more. We didn't want that, so GoSG is free, with no ads.</p>
+    <p class="lead dark">It isn't perfect yet. We read every message and keep making it better. Tell us what to fix in Settings › Send Feedback, or <a href="mailto:{EMAIL}">email us</a>. We just want to be useful.</p>
+  </div>
 </div></section>
 
 <section class="ops"><div class="wrap">
@@ -188,7 +210,7 @@ def home():
 
 <section class="more-grid"><div class="wrap narrow">
   <p class="eyebrow">Privacy</p><h2>Your commute is your business.</h2>
-  <p class="lead dark">No ads and no account. Your favourites stay on your iPhone, and your location is used on the device to find stops near you. It isn't sent to us.</p>
+  <p class="lead dark">No ads, and no account needed for bus times. Your favourites stay on your iPhone, and your location is used on the device to find stops near you. It isn't sent to us.</p>
 </div></section>
 
 <section class="more-grid"><div class="wrap">
@@ -205,7 +227,7 @@ def home():
 <section><div class="wrap">
   <h2>At a glance</h2>
   <dl class="glance">
-    <dt>Price</dt><dd>Free, with no ads and no in-app purchases from 2.1: live times, widgets, Lock Screen, Apple Watch, MRT planner, cameras and up to 10 leave-now alerts. AI-written answers in Ask: 5 a day.</dd>
+    <dt>Price</dt><dd>Free, with no ads and no in-app purchases from 2.1: live times, widgets, Lock Screen, Apple Watch, MRT planner, cameras and up to 10 leave-now alerts. In Ask, on-device AI is unlimited; cloud AI: 10 answers a month after a free phone sign-in.</dd>
     <dt>Devices</dt><dd>iPhone and iPad on iOS 17 or later. Macs with Apple silicon via the Mac App Store.</dd>
     <dt>Languages</dt><dd>English, 简体中文, 繁體中文, Bahasa Melayu, தமிழ், हिन्दी</dd>
   </dl>
@@ -227,7 +249,15 @@ def home():
     schema = [
         {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "GoSG Bus",
          "operatingSystem": "iOS 17.0 or later", "applicationCategory": "TravelApplication",
-         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "SGD"}, "url": BASE, "downloadUrl": STORE},
+         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "SGD"}, "url": BASE, "downloadUrl": STORE,
+         "description": "Live arrival times for every bus stop in Singapore from official LTA data. Free, no ads.",
+         "image": BASE + "img/og-card.jpg", "screenshot": BASE + "img/hero-list.jpg",
+         "inLanguage": ["en", "zh-Hans", "zh-Hant", "ms", "ta", "hi"],
+         "publisher": {"@type": "Organization", "name": "Best Apps Club", "url": "https://bestappsclub.github.io/"}},
+        {"@context": "https://schema.org", "@type": "VideoObject", "name": "Thank you for trying GoSG Bus",
+         "description": "Why GoSG Bus is free with no ads, and a short tour: live times, the bus map, widgets, the Lock Screen and Ask.",
+         "thumbnailUrl": BASE + "vid/thank-you.jpg", "contentUrl": BASE + "vid/thank-you.mp4",
+         "uploadDate": "2026-11-21", "duration": "PT50S"},
         {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
             {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]},
     ]
@@ -280,7 +310,7 @@ def guides():
 <tr><td>Family members</td><td>Language</td><td>6 languages, including 中文, Melayu, தமிழ் and हिन्दी</td></tr>
 </tbody></table>"""),
         ("free", "What is free in GoSG?",
-         "<p>Everything, with no ads and no account. From GoSG 2.1 there is no paid tier: live times, widgets, the Lock Screen, Apple Watch, the MRT planner and up to 10 leave-now alerts. Ask gives 5 AI-written answers a day; answers worked out from bus data are unlimited.</p>"),
+         "<p>Everything, with no ads. From GoSG 2.1 there is no paid tier: live times, widgets, the Lock Screen, Apple Watch, the MRT planner and up to 10 leave-now alerts. In Ask, on-device AI and answers worked out from bus data are unlimited; cloud AI gives 10 answers a month after a free phone sign-in.</p>"),
         ("compare", "Compare with the app you use now",
          '<p>See <a href="gosg-vs-bussing.html">GoSG Bus vs BusSing</a> for a side-by-side, including where BusSing is ahead.</p>'),
     ])
