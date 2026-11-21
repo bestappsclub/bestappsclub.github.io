@@ -247,9 +247,9 @@ def home():
          "inLanguage": ["en", "zh-Hans", "zh-Hant", "ms", "ta", "hi"],
          "publisher": {"@type": "Organization", "name": "Best Apps Club", "url": "https://bestappsclub.github.io/"}},
         {"@context": "https://schema.org", "@type": "VideoObject", "name": "Thank you for trying GoSG Bus",
-         "description": "Why GoSG Bus is free with no ads, and a short tour: live times, the bus map, widgets, the Lock Screen and Ask.",
+         "description": "A short tour of GoSG Bus: live times, the bus map, widgets, the Lock Screen and Ask. Free, with no ads.",
          "thumbnailUrl": BASE + "vid/thank-you.jpg", "contentUrl": BASE + "vid/thank-you.mp4",
-         "uploadDate": "2026-11-21", "duration": "PT50S"},
+         "uploadDate": "2026-11-21", "duration": "PT31S"},
         {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
             {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]},
     ]
