@@ -116,7 +116,8 @@ FAQ = [
     ("Is GoSG free?", "Yes. Live times, Nearby, Favourites, Search, routes, the bus map, cameras and the MRT map are free, with no ads. GoSG Plus is optional and adds more leave-now alerts and AI answers."),
     ("Do I need an account?", "No. Open the app and use it."),
     ("Which devices and languages?", "iPhone and iPad with iOS 17 or later, and Macs with Apple silicon. English, 简体中文, 繁體中文, Bahasa Melayu, தமிழ் and हिन्दी."),
-    ("Is there an Apple Watch app?", "Not yet. Widgets, the Lock Screen and Siri cover the quick look for now."),
+    ("Is there an Apple Watch app?", "Yes, from GoSG 2.1. Your favourite stops and starred buses appear on the watch, and it fetches live times on its own. There is also a watch face complication for your next bus."),
+    ("Can I plan MRT trips without signal?", "Yes, from GoSG 2.1. MRT › Plan works out the fastest train route on your iPhone, with changes and time, even underground."),
     ("How do I report a problem?", f"Use Settings › Send feedback in the app, or email {EMAIL}."),
 ]
 
@@ -175,7 +176,8 @@ def home():
   <div class="grid4">
     <div class="f"><i>🔔</i><h3>Get-off alerts <span class=tag>2.1</span></h3><p>Pick your stop on the bus map. GoSG nudges you 2 stops before, and again at the stop before yours.</p></div>
     <div class="f"><i>🚦</i><h3>Causeway cameras</h3><p>Woodlands and Tuas checkpoint photos before you head to JB. <a href="guides/causeway-traffic-cameras.html">How it works</a></p></div>
-    <div class="f"><i>🚇</i><h3>MRT map</h3><p>Every station and exit on one map, with directions in Apple Maps.</p></div>
+    <div class="f"><i>🚇</i><h3>MRT trip planner <span class=tag>2.1</span></h3><p>Fastest train route with changes and time, worked out on your iPhone. No signal needed.</p></div>
+    <div class="f"><i>⌚</i><h3>Apple Watch <span class=tag>2.1</span></h3><p>Favourite stops on your wrist, plus a complication for your next bus.</p></div>
     <div class="f"><i>🗣️</i><h3>Siri</h3><p>"When's my next bus?" "Track my bus." "Any traffic incidents near me?"</p></div>
   </div>
 </div></section>
@@ -265,13 +267,13 @@ def guides():
     ])
     article("gosg-vs-bussing", *GUIDES[1][1:3], GUIDES[1][3], [
         ("short", "The short version",
-         "<p>Both apps show live LTA bus times for every stop, without ads. <b>BusSing</b> is ahead on Apple Watch and offline MRT routing. <b>GoSG</b> is ahead on languages, plain-language trip planning, leave-now alerts and the live bus map with traffic incidents.</p>"),
+         "<p>Both apps show live LTA bus times for every stop, without ads. From GoSG 2.1 both have widgets, Live Activities, an Apple Watch app, get-off alerts and offline MRT routing. <b>BusSing</b> has a longer track record and more ratings. <b>GoSG</b> is ahead on languages, plain-language trip planning, leave-now alerts and the live bus map with traffic incidents.</p>"),
         ("table", "Side by side", """<table><thead><tr><th></th><th>GoSG Bus</th><th>BusSing</th></tr></thead><tbody>
 <tr><td>Live LTA arrivals</td><td>✓</td><td>✓</td></tr>
 <tr><td>Home and Lock Screen widgets</td><td>✓ (from 2.1)</td><td>✓</td></tr>
 <tr><td>Live Activity / Dynamic Island</td><td>✓ (from 2.1)</td><td>✓</td></tr>
-<tr><td>Apple Watch app</td><td>Not yet</td><td>✓</td></tr>
-<tr><td>Offline MRT routing</td><td>MRT map (online)</td><td>✓</td></tr>
+<tr><td>Apple Watch app</td><td>✓ (from 2.1)</td><td>✓</td></tr>
+<tr><td>Offline MRT routing</td><td>✓ (from 2.1)</td><td>✓</td></tr>
 <tr><td>Plan a trip by asking</td><td>✓ Ask tab and Siri</td><td>Directions</td></tr>
 <tr><td>Leave-now alerts at set times</td><td>✓</td><td>–</td></tr>
 <tr><td>Get-off (alight) alerts</td><td>✓ (from 2.1)</td><td>✓</td></tr>
@@ -283,11 +285,11 @@ def guides():
 <tr><td>Paid tier</td><td>GoSG Plus (optional)</td><td>BusSing Express (optional)</td></tr>
 </tbody></table>"""),
         ("bussing", "Where BusSing is better",
-         "<p>If you want your bus on your wrist, BusSing has an Apple Watch app and GoSG doesn't yet. BusSing also plans MRT trips with no signal, which helps underground. It has more ratings on the App Store and ships updates often.</p>"),
+         "<p>BusSing has many more ratings on the App Store and ships updates often. Its Apple Watch app and offline MRT planner have been out longer; GoSG's arrive in 2.1. If you want a single-language, polished app with a long track record, BusSing is a safe pick.</p>"),
         ("gosg", "Where GoSG is better",
          "<p>GoSG speaks six languages, so it works for parents and grandparents who read 中文, Melayu or தமிழ். You can type or say a question in plain words and get buses, transfers and time door to door. Leave-now alerts tell you when to walk out for your usual bus. It also runs on iOS 17, so older iPhones are covered.</p>"),
         ("pick", "Which should you try?",
-         "<p>Try both on the same commute for a day; both are free to start. If Watch support is a must, pick BusSing. If you want alerts, Ask, or another language, pick GoSG.</p>"),
+         "<p>Try both on the same commute for a day; both are free to start. If you want leave-now alerts, plain-language Ask, or another language, pick GoSG.</p>"),
     ], disclosure=True)
     article("bus-widget-iphone", *GUIDES[2][1:3], GUIDES[2][3], [
         ("first", "First, star a stop", "<p>Open GoSG, find your stop on Nearby or Search, and tap the ☆. The widget shows your favourite stops, so it stays empty until you have one.</p>"),
