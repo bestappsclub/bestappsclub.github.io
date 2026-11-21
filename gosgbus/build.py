@@ -26,8 +26,6 @@ def badge(ct):
 GUIDES = [
     ("best-sg-bus-app", "Best Singapore bus app for iPhone? What to check",
      "Five checks to run on your own commute before you pick a bus app.", "Buying guide"),
-    ("gosg-vs-bussing", "GoSG Bus vs BusSing: which Singapore bus app fits you?",
-     "An honest side-by-side, including where BusSing is ahead.", "App comparison"),
     ("bus-widget-iphone", "How to put Singapore bus times on your iPhone Home Screen",
      "Add the GoSG widget, pick a stop, and track a bus on the Lock Screen.", "iPhone tips"),
     ("causeway-traffic-cameras", "Check Woodlands and Tuas Causeway traffic before you go",
@@ -312,35 +310,9 @@ def guides():
         ("free", "What is free in GoSG?",
          "<p>Everything, with no ads. From GoSG 2.1 there is no paid tier: live times, widgets, the Lock Screen, Apple Watch, the MRT planner and up to 10 leave-now alerts. In Ask, on-device AI and answers worked out from bus data are unlimited; cloud AI gives 10 answers a month after a free phone sign-in.</p>"),
         ("compare", "Compare with the app you use now",
-         '<p>See <a href="gosg-vs-bussing.html">GoSG Bus vs BusSing</a> for a side-by-side, including where BusSing is ahead.</p>'),
+         "<p>Run the five checks above on your own commute with GoSG and the app you use now, for a day each. Other apps may suit you better in some ways; we'd rather you pick the one that works for you. If something in GoSG falls short, tell us in Settings › Send Feedback.</p>"),
     ])
-    article("gosg-vs-bussing", *GUIDES[1][1:3], GUIDES[1][3], [
-        ("short", "The short version",
-         "<p>Both apps show live LTA bus times for every stop, without ads. From GoSG 2.1 both have widgets, Live Activities, an Apple Watch app, get-off alerts and offline MRT routing. <b>BusSing</b> has a longer track record and more ratings. <b>GoSG</b> is ahead on languages, plain-language trip planning, leave-now alerts and the live bus map with traffic incidents.</p>"),
-        ("table", "Side by side", """<table><thead><tr><th></th><th>GoSG Bus</th><th>BusSing</th></tr></thead><tbody>
-<tr><td>Live LTA arrivals</td><td>✓</td><td>✓</td></tr>
-<tr><td>Home and Lock Screen widgets</td><td>✓ (from 2.1)</td><td>✓</td></tr>
-<tr><td>Live Activity / Dynamic Island</td><td>✓ (from 2.1)</td><td>✓</td></tr>
-<tr><td>Apple Watch app</td><td>✓ (from 2.1)</td><td>✓</td></tr>
-<tr><td>Offline MRT routing</td><td>✓ (from 2.1)</td><td>✓</td></tr>
-<tr><td>Plan a trip by asking</td><td>✓ Ask tab and Siri</td><td>Directions</td></tr>
-<tr><td>Leave-now alerts at set times</td><td>✓</td><td>–</td></tr>
-<tr><td>Get-off (alight) alerts</td><td>✓ (from 2.1)</td><td>✓</td></tr>
-<tr><td>Bus map with traffic incidents</td><td>✓</td><td>Bus progress with traffic</td></tr>
-<tr><td>Causeway cameras</td><td>✓</td><td>✓</td></tr>
-<tr><td>Languages</td><td>6 (English, 简体, 繁體, Melayu, தமிழ், हिन्दी)</td><td>English</td></tr>
-<tr><td>Minimum iOS</td><td>iOS 17</td><td>iOS 18</td></tr>
-<tr><td>Ads</td><td>None</td><td>None</td></tr>
-<tr><td>Paid tier</td><td>None, all free (from 2.1)</td><td>BusSing Express (optional)</td></tr>
-</tbody></table>"""),
-        ("bussing", "Where BusSing is better",
-         "<p>BusSing has many more ratings on the App Store and ships updates often. Its Apple Watch app and offline MRT planner have been out longer; GoSG's arrive in 2.1. If you want a single-language, polished app with a long track record, BusSing is a safe pick.</p>"),
-        ("gosg", "Where GoSG is better",
-         "<p>GoSG speaks six languages, so it works for parents and grandparents who read 中文, Melayu or தமிழ். You can type or say a question in plain words and get buses, transfers and time door to door. Leave-now alerts tell you when to walk out for your usual bus. It also runs on iOS 17, so older iPhones are covered.</p>"),
-        ("pick", "Which should you try?",
-         "<p>Try both on the same commute for a day; both are free to start. If you want leave-now alerts, plain-language Ask, or another language, pick GoSG.</p>"),
-    ], disclosure=True)
-    article("bus-widget-iphone", *GUIDES[2][1:3], GUIDES[2][3], [
+    article("bus-widget-iphone", *GUIDES[1][1:3], GUIDES[1][3], [
         ("first", "First, star a stop", "<p>Open GoSG, find your stop on Nearby or Search, and tap the ☆. The widget shows your favourite stops, so it stays empty until you have one.</p>"),
         ("add", "Add the widget", '<ol class="steps"><li>Touch and hold an empty spot on the Home Screen until the apps jiggle.</li><li>Tap <b>Edit</b>, then <b>Add Widget</b>.</li><li>Search for <b>GoSG Bus</b> and pick small, medium or large.</li><li>Touch and hold the widget, tap <b>Edit Widget</b>, and choose which stop it shows.</li></ol><p>Widgets and Live Activities arrive in GoSG 2.1.</p>' + clip("add-widget", "../")),
         ("sizes", "Three sizes, any favourite stop", '<p>Touch and hold the widget to switch between small, medium and large, or tap <b>Edit Widget</b> to pick which favourite stop it shows. Turn on <b>Use Nearest Favourite</b> and it follows you. Tap ↻ for fresh times, or tap the widget to open your favourites.</p>' + clip("widgets", "../")),
@@ -348,17 +320,17 @@ def guides():
         ("lock", "Lock Screen and Dynamic Island", "<p>Open a stop and tap 🔒 to follow the whole stop: the next five buses count down on your Lock Screen and in the Dynamic Island, even when GoSG is closed. To follow just one bus, touch and hold it and tap <b>Track on Lock Screen</b>, or say “Track my bus with GoSG” to Siri.</p>" + clip("lock-screen", "../")),
         ("battery", "Does it drain the battery?", "<p>The widget fetches once and then counts down on its own, refreshing every few minutes. It doesn't poll every second.</p>"),
     ])
-    article("causeway-traffic-cameras", *GUIDES[3][1:3], GUIDES[3][3], [
+    article("causeway-traffic-cameras", *GUIDES[2][1:3], GUIDES[2][3], [
         ("where", "Where to find the cameras", "<p>Open <b>Search</b>: the checkpoint cameras are at the top. They also appear on bus stops for Causeway services such as the CW buses, 160, 170 and 950.</p>" + clip("cameras", "../")),
         ("which", "Which cameras", "<p>Woodlands Causeway and the Tuas Second Link, from the public traffic camera feed on data.gov.sg. Photos update every few minutes; pull down to refresh.</p>"),
         ("share", "Share with family", "<p>Tap Share on a camera to send the photo with a caption, so the people waiting for you know what the jam looks like.</p>"),
     ])
-    article("last-bus-singapore", *GUIDES[4][1:3], GUIDES[4][3], [
+    article("last-bus-singapore", *GUIDES[3][1:3], GUIDES[3][3], [
         ("details", "Turn on arrival details", "<p>Go to <b>Settings › Show arrival details</b>. Each service then shows its destination, how often it comes, and first and last bus times for your stop.</p>"),
         ("ask", "Or just ask", "<p>Open the <b>Ask</b> tab and type “Last 52 tonight?” or “When's the first 14 tomorrow?”. GoSG answers for the stop you're at or the one you name.</p>" + clip("ask", "../")),
         ("note", "Holidays and eves", "<p>Last bus times follow the operator's published timetable. On eves of public holidays some services run later; LTA's live times will show the extra buses when they're on the road.</p>"),
     ])
-    article("how-to-use-gosg", *GUIDES[5][1:3], GUIDES[5][3], [
+    article("how-to-use-gosg", *GUIDES[4][1:3], GUIDES[4][3], [
         ("arrivals", "Live arrivals and the bus map", "<p>Nearby stops are on the first screen. Tap a stop to open it and see the next three buses of every service, then tap a bus to follow it on the map.</p>" + clip("arrivals", "../")),
         ("widget", "Widgets and the Lock Screen", "<p>Add the widget in small, medium or large and pick a stop for each. Open a stop and tap 🔒 to follow it on the Lock Screen.</p>" + clip("add-widget", "../") + clip("widgets", "../") + clip("lock-screen", "../")),
         ("alerts", "Leave-now alerts", "<p>On Favourites, turn on alerts and pick your bus and your usual times. You can have up to ten, free.</p>" + clip("leave-now", "../")),
