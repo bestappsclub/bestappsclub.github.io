@@ -83,6 +83,8 @@ def page(path, title, desc, body, *, h_nav=True, schema=None):
 <link rel="icon" href="{up}img/icon.jpg">
 <link rel="stylesheet" href="{up}site.css">
 {ld}
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-153BDPCC9N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('js',new Date());gtag('config','G-153BDPCC9N',{{allow_google_signals:false,allow_ad_personalization_signals:false}});</script>
 </head>
 <body>
 <header class="bar"><div class="wrap">
