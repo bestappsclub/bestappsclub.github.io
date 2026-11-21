@@ -89,14 +89,14 @@ def page(path, title, desc, body, *, h_nav=True, schema=None):
 <body>
 <header class="bar"><div class="wrap">
   <a class="logo" href="{up}index.html"><img src="{up}img/icon.jpg" alt=""> GoSG Bus</a>
-  <nav><a href="{up}index.html#features">Features</a><a href="{up}guides/index.html">Guides</a><a href="{up}index.html#faq">FAQ</a>
+  <nav><a href="{up}index.html#features">Features</a><a href="{up}bus-times.html">Bus times</a><a href="{up}guides/index.html">Guides</a><a href="{up}index.html#faq">FAQ</a>
   <a class="get" href="{STORE}?ct=gosgbus-nav&amp;pt=127920570">Get GoSG</a></nav>
 </div></header>
 {body}
 <footer><div class="wrap cols">
   <div><b>GoSG Bus</b><p>Live Singapore bus times, from official LTA DataMall data. Times are estimates and can be briefly unavailable during LTA maintenance.</p></div>
   <div><b>Guides</b>{compare}</div>
-  <div><b>Product</b><a href="{up}index.html#features">Features</a><a href="{up}index.html#faq">FAQ</a><a href="{SUPPORT}">Support</a><a href="mailto:{EMAIL}">Contact</a></div>
+  <div><b>Product</b><a href="{up}bus-times.html">Live bus times</a><a href="{up}index.html#features">Features</a><a href="{up}index.html#faq">FAQ</a><a href="{SUPPORT}">Support</a><a href="mailto:{EMAIL}">Contact</a></div>
   <div><b>Legal</b><a href="{PRIVACY}">Privacy policy</a><a href="{TERMS}">Terms of use</a></div>
 </div><div class="wrap fine">© 2026 Best Apps Club · Bus data: LTA DataMall · Camera images: data.gov.sg</div></footer>
 {PLAY_IN_VIEW if "<video" in body else ""}
@@ -146,6 +146,7 @@ def home():
     <h1>Your next bus,<br><em>at a glance.</em></h1>
     <p class="lead">Live arrival times for every bus stop in Singapore. Know when to leave, see where your bus is, and plan the trip by just asking.</p>
     <div class="cta">{badge("gosgbus-hero")}<span class="note">Free · iPhone &amp; iPad · iOS 17+</span></div>
+    <p class="note" style="margin-top:14px"><a href="bus-times.html" style="color:#8fe36f;font-weight:600">Check live bus times online →</a></p>
     <div class="chips"><span>No ads</span><span>No account</span><span>6 languages</span></div>
   </div>
   <div class="phones" aria-hidden="true"><img src="img/1-nearby.jpg" alt=""><img src="img/3-busmap.jpg" alt=""></div>
@@ -323,13 +324,43 @@ def guides():
          f'<section><div class="wrap"><p class="eyebrow">GoSG guides</p><h1 class="ph1">Singapore bus guides for your iPhone</h1><div class="cards">{cards}</div></div></section>')
 
 
+def bus_times():
+    body = f"""
+<section class="bt-hero"><div class="wrap narrow">
+  <p class="eyebrow">Live bus arrivals</p>
+  <h1 class="ph1">Singapore bus arrival times</h1>
+  <p class="lead dark">Live times for any bus stop, with first and last bus today. Search a stop name, road or the 5-digit code on the pole.</p>
+  <div class="bt-search">
+    <input id="q" type="search" inputmode="search" autocomplete="off" placeholder="e.g. Orchard, 08057, Dhoby Ghaut" aria-label="Search bus stops">
+    <button id="near" type="button">📍 Near me</button>
+  </div>
+  <div id="results" class="bt-list" aria-live="polite"></div>
+  <div id="recent" class="bt-list"></div>
+</div></section>
+<section class="bt-panel-wrap"><div class="wrap narrow">
+  <div id="stop" class="bt-panel" hidden></div>
+  <div class="tryit"><b>Times on your Home Screen and Lock Screen.</b><span>GoSG Bus adds widgets, leave-now alerts and get-off alerts. Free, no ads.</span>{badge("gosgbus-bustimes")}</div>
+  <h2>About these times</h2>
+  <p class="lead dark">Live times come from LTA DataMall, the same feed every Singapore bus app uses, and refresh every 20 seconds while this page is open. First and last bus are from the operators' published timetable for today (weekday, Saturday or Sunday; public holidays follow Sunday). Your location is only used in your browser to find nearby stops.</p>
+  <p><a href="guides/last-bus-singapore.html">How to check the last bus in Singapore →</a></p>
+</div></section>
+<script src="bus-times.js" defer></script>
+"""
+    schema = [{"@context": "https://schema.org", "@type": "WebApplication", "name": "Singapore bus arrival times",
+               "url": BASE + "bus-times.html", "applicationCategory": "TravelApplication", "operatingSystem": "Any",
+               "offers": {"@type": "Offer", "price": "0", "priceCurrency": "SGD"}}]
+    page("bus-times.html", "Singapore bus arrival times, live – any bus stop | GoSG Bus",
+         "Live Singapore bus arrival times for any stop, with first and last bus today. Search by stop name, road or code, or find stops near you. Free, no app needed.",
+         body, schema=schema)
+
+
 def sitemap():
-    urls = [BASE] + [BASE + "guides/"] + [BASE + f"guides/{s}.html" for s, *_ in GUIDES]
+    urls = [BASE, BASE + "bus-times.html"] + [BASE + "guides/"] + [BASE + f"guides/{s}.html" for s, *_ in GUIDES]
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
         "".join(f"  <url><loc>{u}</loc><lastmod>{UPDATED}</lastmod></url>\n" for u in urls) + "</urlset>\n"
     open(os.path.join(ROOT, "sitemap.xml"), "w").write(xml)
 
 
 if __name__ == "__main__":
-    home(); guides(); sitemap()
+    home(); guides(); bus_times(); sitemap()
     print("built", ROOT)
