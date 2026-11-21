@@ -148,7 +148,7 @@ def home():
     <h1>Your next bus,<br><em>at a glance.</em></h1>
     <p class="lead">Live arrival times for every bus stop in Singapore. Know when to leave, see where your bus is, and plan the trip by just asking.</p>
     <div class="cta">{badge("gosgbus-hero")}<span class="note">Free · iPhone &amp; iPad · iOS 17+</span></div>
-    <p class="note" style="margin-top:14px"><a href="bus-times.html" style="color:#8fe36f;font-weight:600">Check live bus times online →</a></p>
+    <p class="note" style="margin-top:14px"><a href="bus-times.html" style="color:var(--brand);font-weight:600">Check live bus times online →</a></p>
     <div class="chips"><span>No ads</span><span>No account</span><span>6 languages</span></div>
   </div>
   <div class="phones" aria-hidden="true"><img src="img/hero-list.jpg" alt=""><img src="img/hero-widgets.jpg" alt=""></div>
