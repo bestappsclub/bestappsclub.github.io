@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wayglobe – Your friends' moments on a 3D globe</title>
+<meta name="description" content="Wayglobe puts every photo you and your friends share on a spinning 3D globe, right where it was taken. Fly through the week, share it as a video, and choose how exact your location is. Free for iPhone and iPad.">
+<link rel="canonical" href="https://bestappsclub.github.io/wayglobe/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#070B1F">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wayglobe">
+<meta property="og:url" content="https://bestappsclub.github.io/wayglobe/">
+<meta property="og:title" content="Wayglobe – Your friends' moments, on one globe">
+<meta property="og:description" content="Every photo lands where it was taken. Fly through your friends' week, then share it as a video.">
+<meta property="og:image" content="https://bestappsclub.github.io/wayglobe/img/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bestappsclub.github.io/wayglobe/img/og-card.jpg">
+<meta name="apple-itunes-app" content="app-id=6837916220">
+<link rel="icon" href="img/icon.png">
+<link rel="apple-touch-icon" href="img/icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Wayglobe: Friends Photo Map","operatingSystem":"iOS 26 or later, iPadOS 26 or later","applicationCategory":"SocialNetworkingApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://bestappsclub.github.io/wayglobe/","downloadUrl":"https://apps.apple.com/app/id6837916220","image":"https://bestappsclub.github.io/wayglobe/img/og-card.jpg","publisher":{"@type":"Organization","name":"Best Apps Club","url":"https://bestappsclub.github.io/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Wayglobe free?","acceptedAnswer":{"@type":"Answer","text":"Yes. No ads, no subscription and no in-app purchases."}},{"@type":"Question","name":"Do I need a phone number or email?","acceptedAnswer":{"@type":"Answer","text":"No. Pick a name and you're in. Add friends with a 6-letter invite code or by their @name. A recovery code lets you move your account to a new phone."}},{"@type":"Question","name":"Can friends see exactly where I am?","acceptedAnswer":{"@type":"Answer","text":"Only if you choose Exact spot. You can share a moment as Nearby (about 1 km) or City only, and anything taken near your home area is never shown more exactly than Nearby."}},{"@type":"Question","name":"Who sees my photos?","acceptedAnswer":{"@type":"Answer","text":"Friends by default. You can also share a moment with everyone on Explore, or keep it private on your own globe."}},{"@type":"Question","name":"What goes into a tour video?","acceptedAnswer":{"@type":"Answer","text":"Your own moments and friends' moments they shared with everyone. Friends-only moments are never put into a video."}},{"@type":"Question","name":"How do you deal with bad content?","acceptedAnswer":{"@type":"Answer","text":"Everyone agrees to the community guidelines before posting. Every photo and comment can be reported, content reported by several people is hidden automatically, a moderator reviews reports, and you can block anyone."}}]}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-153BDPCC9N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-153BDPCC9N',{allow_google_signals:false,allow_ad_personalization_signals:false});</script>
+<style>
+:root{--bg:#070B1F;--bg2:#1B2A6B;--card:#0f1638;--line:#222c5c;--text:#f3f6ff;--sub:#b9c6ee;--coral:#FF8A5B;--glow:#5B8CFF;--amber:#FFC747}
+*{box-sizing:border-box}html{scroll-behavior:smooth}html,body{overflow-x:hidden}.grid2>*{min-width:0}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.bar{position:sticky;top:0;z-index:5;background:rgba(7,11,31,.82);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none}
+.logo img{width:30px;height:30px;border-radius:8px}
+nav{display:flex;align-items:center;gap:22px;font-size:15px}
+nav a{text-decoration:none;color:var(--sub)}nav a:hover{color:var(--text)}
+nav .get{color:#fff;background:var(--coral);padding:7px 14px;border-radius:999px;font-weight:600}
+.hero{position:relative;padding:72px 0 40px;background:radial-gradient(900px 520px at 78% 20%,rgba(91,140,255,.35),transparent 70%),linear-gradient(180deg,var(--bg2),var(--bg) 85%)}
+.stars{position:absolute;inset:0;pointer-events:none;opacity:.55;background-image:radial-gradient(1.5px 1.5px at 12% 18%,#fff,transparent),radial-gradient(1px 1px at 32% 72%,#fff,transparent),radial-gradient(1.5px 1.5px at 58% 12%,#fff,transparent),radial-gradient(1px 1px at 82% 64%,#fff,transparent),radial-gradient(1px 1px at 92% 22%,#fff,transparent),radial-gradient(1.2px 1.2px at 44% 40%,#fff,transparent),radial-gradient(1px 1px at 6% 86%,#fff,transparent),radial-gradient(1.2px 1.2px at 70% 90%,#fff,transparent)}
+.grid2{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.eyebrow{color:var(--amber);font-weight:600;letter-spacing:.02em;margin:0 0 10px;font-size:15px}
+h1{font-size:clamp(38px,6vw,64px);line-height:1.04;margin:0 0 18px;letter-spacing:-.02em}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--coral),var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:19px;color:var(--sub);max-width:34em;margin:0 0 26px}
+.cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.badge{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#000;border-radius:12px;padding:9px 16px;text-decoration:none}
+.badge svg{width:24px;height:24px}.badge small{display:block;font-size:11px;line-height:1}.badge b{display:block;font-size:19px;line-height:1.15}
+.note{color:var(--sub);font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips span{border:1px solid var(--line);background:rgba(15,22,56,.6);border-radius:999px;padding:5px 12px;font-size:14px;color:var(--sub)}
+.phones{display:flex;gap:16px;justify-content:center}
+.phones img{width:46%;max-width:250px;border-radius:28px;box-shadow:0 24px 60px rgba(0,0,0,.55)}
+.phones img:last-child{margin-top:48px}
+section{padding:60px 0}
+h2{font-size:clamp(28px,4vw,40px);line-height:1.15;margin:0 0 12px;letter-spacing:-.01em}
+.sub{color:var(--sub);max-width:40em;margin:0 0 34px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px}
+.step:before{counter-increment:s;content:counter(s);display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--coral);color:#fff;font-weight:700;margin-bottom:12px}
+.step h3,.f h3{margin:0 0 6px;font-size:19px}.step p,.f p{margin:0;color:var(--sub);font-size:16px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.f{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px}
+.f .ic{font-size:26px;margin-bottom:10px}
+.video{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:center}
+.video video{width:100%;max-width:330px;border-radius:26px;display:block;margin:auto;box-shadow:0 24px 60px rgba(0,0,0,.55);background:#000;aspect-ratio:9/16}
+.video ul{padding-left:20px;color:var(--sub)}.video li{margin:6px 0}
+.gallery{display:flex;gap:16px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory}
+.gallery img{width:230px;flex:none;border-radius:24px;scroll-snap-align:start;border:1px solid var(--line)}
+.privacy{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin-bottom:12px}
+.faq summary{cursor:pointer;font-weight:600}.faq p{color:var(--sub);margin:10px 0 0}
+.final{text-align:center;background:radial-gradient(700px 300px at 50% 0%,rgba(255,138,91,.22),transparent 70%)}
+.final .cta{justify-content:center}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--sub);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between}
+footer a{text-decoration:none}footer a:hover{color:var(--text)}
+@media (max-width:860px){.grid2,.video,.privacy{grid-template-columns:1fr}.steps,.features{grid-template-columns:1fr}nav a:not(.get){display:none}.hero{padding-top:44px}.phones img:last-child{margin-top:28px}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="logo" href="#"><img src="img/icon.png" alt="" width="30" height="30">Wayglobe</a>
+  <nav><a href="#how">How it works</a><a href="#video">Videos</a><a href="#privacy">Privacy</a><a href="#faq">FAQ</a><a class="get" href="https://apps.apple.com/app/id6837916220">Get the app</a></nav>
+</div></header>
+
+<main>
+<section class="hero"><div class="stars"></div><div class="wrap grid2">
+  <div>
+    <p class="eyebrow">Free for iPhone &amp; iPad</p>
+    <h1>Your friends' moments, <em>on one globe</em></h1>
+    <p class="lead">Every photo you and your friends share lands on a spinning 3D globe, right where it was taken. Spin it to see who's in Kyoto, who's at the beach and who just got home.</p>
+    <div class="cta">
+      <a class="badge" href="https://apps.apple.com/app/id6837916220" aria-label="Download Wayglobe on the App Store">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 12.6c-.02-2.33 1.9-3.45 1.99-3.5-1.08-1.59-2.77-1.8-3.37-1.83-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.04-.8-1.56.02-3.01.91-3.81 2.31-1.63 2.82-.42 6.99 1.17 9.28.78 1.12 1.7 2.38 2.91 2.33 1.17-.05 1.61-.75 3.02-.75 1.41 0 1.81.75 3.04.73 1.26-.02 2.05-1.14 2.82-2.27.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.44-.94-2.47-3.72zM14.06 5.75c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.72 1.4-.6.69-1.12 1.79-.98 2.85 1.04.08 2.1-.53 2.74-1.31z"/></svg>
+        <span><small>Download on the</small><b>App Store</b></span>
+      </a>
+      <span class="note">No phone number. No ads.</span>
+    </div>
+    <div class="chips"><span>📍 Photos land where they were taken</span><span>✈️ Fly through the week</span><span>🎬 Share as a video</span><span>🔒 You choose how exact</span></div>
+  </div>
+  <div class="phones">
+    <img src="img/shot-globe.jpg" alt="The Wayglobe globe with friends' photos pinned around the world" width="250" height="543">
+    <img src="img/shot-tour.jpg" alt="A tour flying from moment to moment with music" width="250" height="543" loading="lazy">
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <h2>How it works</h2>
+  <p class="sub">A camera, a globe and your friends. That's it.</p>
+  <div class="steps">
+    <div class="step"><h3>Snap a moment</h3><p>Take a photo in the app or pick one from your library. Wayglobe reads where it was taken.</p></div>
+    <div class="step"><h3>Choose how exact</h3><p>Exact spot, nearby (about 1 km) or city only. Near home it's never more exact than nearby.</p></div>
+    <div class="step"><h3>It lands on their globe</h3><p>Friends see it pop up where you are, react with an emoji and leave a comment.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Made for staying close from far away</h2>
+  <p class="sub">For friends in different cities, a family spread across time zones, or a group trip you want to remember together.</p>
+  <div class="features">
+    <div class="f"><div class="ic">✈️</div><h3>Fly through the week</h3><p>Press Tour and the globe flies from photo to photo in order, with music. Pick a built-in track or your own song.</p></div>
+    <div class="f"><div class="ic">🎬</div><h3>Share it as a video</h3><p>Turn the tour into a 9:16 clip for Reels, TikTok and Shorts: the spinning globe, your photos and the soundtrack.</p></div>
+    <div class="f"><div class="ic">🗓️</div><h3>Your week on the globe</h3><p>Every Sunday you get a summary of everyone's week: who posted, the places and the kilometres between them.</p></div>
+    <div class="f"><div class="ic">🔔</div><h3>Know when friends post</h3><p>A short note when a friend shares a moment. Posting a whole album sends one notification, not twenty.</p></div>
+    <div class="f"><div class="ic">🌍</div><h3>Explore the world</h3><p>Moments people share with everyone, from Patagonia to Accra. A daily window onto places you haven't been.</p></div>
+    <div class="f"><div class="ic">🔑</div><h3>Invite with a code</h3><p>No sign-up, no phone number. Share a 6-letter code and you're friends.</p></div>
+  </div>
+</div></section>
+
+<section id="video"><div class="wrap video">
+  <video src="img/tour.mp4" poster="img/tour.jpg" autoplay muted loop playsinline preload="metadata" aria-label="An example tour video made in Wayglobe"></video>
+  <div>
+    <h2>Your week, as a 30-second film</h2>
+    <p class="sub">Made on your phone in about a minute. No editing.</p>
+    <ul>
+      <li>The globe spins from one place to the next along the real route.</li>
+      <li>Each photo pops up over a satellite view of where it was taken.</li>
+      <li>Music is built in, or use your own song.</li>
+      <li>Only your moments and friends' public moments go in. Friends-only photos never do.</li>
+    </ul>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>A look inside</h2>
+  <div class="gallery">
+    <img src="img/shot-globe.jpg" alt="Friends' moments on one globe" loading="lazy" width="230" height="500">
+    <img src="img/shot-moment.jpg" alt="A moment with place, time, reactions and comments" loading="lazy" width="230" height="500">
+    <img src="img/shot-compose.jpg" alt="Choosing how exact a location is" loading="lazy" width="230" height="500">
+    <img src="img/shot-tour.jpg" alt="Flying through the week" loading="lazy" width="230" height="500">
+    <img src="img/shot-explore.jpg" alt="Explore moments shared with everyone" loading="lazy" width="230" height="500">
+    <img src="img/shot-friends.jpg" alt="Invite friends with a code" loading="lazy" width="230" height="500">
+  </div>
+</div></section>
+
+<section id="privacy"><div class="wrap">
+  <h2>Your location, your call</h2>
+  <p class="sub">A map of your friends shouldn't be a map of where you live.</p>
+  <div class="privacy">
+    <div class="f"><h3>Three levels of exact</h3><p>Exact spot, nearby or city only, for every moment. Positions shown to others are snapped to a grid, so repeated posts can't be averaged to find you.</p></div>
+    <div class="f"><h3>A safe zone around home</h3><p>Set a home area and anything taken within 600 m of it is never shown more exactly than nearby. Your home area stays on your phone.</p></div>
+    <div class="f"><h3>Friends first</h3><p>Moments go to friends by default. Sharing with everyone is something you choose each time.</p></div>
+    <div class="f"><h3>Reported, reviewed, removed</h3><p>Report any photo or comment. Content reported by several people is hidden right away while a moderator reviews it, and you can block anyone.</p></div>
+  </div>
+</div></section>
+
+<section id="faq" class="faq"><div class="wrap">
+  <h2>Questions</h2>
+  <details><summary>Is Wayglobe free?</summary><p>Yes. No ads, no subscription and no in-app purchases.</p></details>
+  <details><summary>Do I need a phone number or email?</summary><p>No. Pick a name and you're in. Add friends with a 6-letter invite code or by their @name. A recovery code lets you move your account to a new phone.</p></details>
+  <details><summary>Can friends see exactly where I am?</summary><p>Only if you choose Exact spot. You can share a moment as Nearby (about 1 km) or City only, and anything taken near your home area is never shown more exactly than Nearby.</p></details>
+  <details><summary>Who sees my photos?</summary><p>Friends by default. You can also share a moment with everyone on Explore, or keep it private on your own globe.</p></details>
+  <details><summary>What goes into a tour video?</summary><p>Your own moments and friends' moments they shared with everyone. Friends-only moments are never put into a video.</p></details>
+  <details><summary>How do you deal with bad content?</summary><p>Everyone agrees to the <a href="/application/wayglobe/guidelines.html">community guidelines</a> before posting. Every photo and comment can be reported, content reported by several people is hidden automatically, a moderator reviews reports, and you can block anyone.</p></details>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2>Put your friends on the map</h2>
+  <p class="sub" style="margin-left:auto;margin-right:auto">Free on iPhone and iPad, in 17 languages.</p>
+  <div class="cta">
+    <a class="badge" href="https://apps.apple.com/app/id6837916220" aria-label="Download Wayglobe on the App Store">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 12.6c-.02-2.33 1.9-3.45 1.99-3.5-1.08-1.59-2.77-1.8-3.37-1.83-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.04-.8-1.56.02-3.01.91-3.81 2.31-1.63 2.82-.42 6.99 1.17 9.28.78 1.12 1.7 2.38 2.91 2.33 1.17-.05 1.61-.75 3.02-.75 1.41 0 1.81.75 3.04.73 1.26-.02 2.05-1.14 2.82-2.27.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.44-.94-2.47-3.72zM14.06 5.75c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.72 1.4-.6.69-1.12 1.79-.98 2.85 1.04.08 2.1-.53 2.74-1.31z"/></svg>
+      <span><small>Download on the</small><b>App Store</b></span>
+    </a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 Best Apps Club</span>
+  <span><a href="/application/wayglobe/privacy.html">Privacy</a> · <a href="/application/wayglobe/terms.html">Terms</a> · <a href="/application/wayglobe/guidelines.html">Community guidelines</a> · <a href="mailto:bestappsclub@gmail.com?subject=Wayglobe">Support</a> · <a href="/">More apps</a></span>
+</div></footer>
+</body>
+</html>
