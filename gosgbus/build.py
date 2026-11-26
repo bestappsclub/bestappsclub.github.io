@@ -130,7 +130,7 @@ FAQ = [
     ("Which devices and languages?", "iPhone and iPad with iOS 17 or later, and Macs with Apple silicon. English, 简体中文, 繁體中文, Bahasa Melayu, தமிழ் and हिन्दी."),
     ("Is there an Apple Watch app?", "Yes, from GoSG 2.1. Your favourite stops and starred buses appear on the watch, and it fetches live times on its own. There is also a watch face complication for your next bus."),
     ("Can I plan MRT trips without signal?", "Yes, from GoSG 2.1. MRT › Plan works out the fastest train route on your iPhone, with changes and time, even underground."),
-    ("Is there an Android version?", "Yes, in testing on Google Play. Request a spot in the Android section of this page and we'll add your Google account, then join the test and install from Google Play."),
+    ("Is there an Android version?", "Yes, in testing on Google Play. Join the tester group from the Android section of this page, then join the test and install from Google Play."),
     ("How do I report a problem?", f"Use Settings › Send feedback in the app, or email {EMAIL}."),
 ]
 
@@ -208,9 +208,9 @@ def home():
 
 <section id="android" class="more-grid"><div class="wrap narrow">
   <p class="eyebrow">Android · beta</p><h2>GoSG Bus for Android is in testing.</h2>
-  <p class="lead dark">Live arrival times for nearby stops, favourites, search by bus number and the Causeway cameras, on Android. It's free during testing, and only people on the tester list can install it.</p>
-  <ol class="steps"><li><b>Request a spot.</b> Send us the Google account email you use for the Play Store.</li><li><b>Wait for the OK.</b> We add you to the tester list, usually within a day.</li><li><b>Join and install.</b> Open the testing link on your Android phone, tap <i>Become a tester</i>, then install from Google Play.</li></ol>
-  <p class="cta"><a class="btn" href="mailto:bestappsclub@gmail.com?subject=Join%20the%20GoSG%20Bus%20Android%20beta&amp;body=Hi%21%20I%27d%20like%20to%20test%20GoSG%20Bus%20on%20Android.%0A%0AMy%20Google%20account%20email%20%28the%20one%20on%20my%20phone%27s%20Play%20Store%29%3A%20%0A">Request the Android beta</a><a class="more" href="https://play.google.com/apps/testing/com.bestappsclub.gosgbus">Already added? Join the test →</a></p>
+  <p class="lead dark">Live arrival times for nearby stops, favourites, search by bus number and the Causeway cameras, on Android. It's free, and anyone can join the test in three taps.</p>
+  <ol class="steps"><li><b>Join the tester group.</b> Open <a href="https://groups.google.com/g/gosg-android-testers">GoSG Android Testers</a> and tap <i>Join group</i> with the Google account on your phone's Play Store. It's instant and there are no emails or posts.</li><li><b>Become a tester.</b> Open the <a href="https://play.google.com/apps/testing/com.bestappsclub.gosgbus">testing link</a> and tap <i>Become a tester</i>.</li><li><b>Install.</b> Get the app from Google Play (it can take a few minutes to show up).</li></ol>
+  <p class="cta"><a class="btn" href="https://groups.google.com/g/gosg-android-testers">Join the tester group</a><a class="more" href="https://play.google.com/apps/testing/com.bestappsclub.gosgbus">Then join the test →</a></p>
   <p class="note">Questions: <a href="mailto:bestappsclub@gmail.com">bestappsclub@gmail.com</a></p>
 </div></section>
 
