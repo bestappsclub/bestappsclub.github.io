@@ -101,7 +101,7 @@ def page(path, title, desc, body, *, h_nav=True, schema=None):
 <body>
 <header class="bar"><div class="wrap">
   <a class="logo" href="{up}index.html"><img src="{up}img/icon.jpg" alt=""> GoSG Bus</a>
-  <nav><a href="{up}index.html#features">Features</a><a href="{up}bus-times.html">Bus times</a><a href="{up}guides/index.html">Guides</a><a href="{up}index.html#faq">FAQ</a>
+  <nav><a href="{up}index.html#features">Features</a><a href="{up}bus-times.html">Bus times</a><a href="{up}guides/index.html">Guides</a><a href="{up}index.html#faq">FAQ</a><a href="{up}index.html#android">Android</a>
   <a class="get" href="{STORE}?ct=gosgbus-nav&amp;pt=127920570">Get GoSG</a></nav>
 </div></header>
 {body}
@@ -130,6 +130,7 @@ FAQ = [
     ("Which devices and languages?", "iPhone and iPad with iOS 17 or later, and Macs with Apple silicon. English, 简体中文, 繁體中文, Bahasa Melayu, தமிழ் and हिन्दी."),
     ("Is there an Apple Watch app?", "Yes, from GoSG 2.1. Your favourite stops and starred buses appear on the watch, and it fetches live times on its own. There is also a watch face complication for your next bus."),
     ("Can I plan MRT trips without signal?", "Yes, from GoSG 2.1. MRT › Plan works out the fastest train route on your iPhone, with changes and time, even underground."),
+    ("Is there an Android version?", "Yes, in testing on Google Play. Request a spot in the Android section of this page and we'll add your Google account, then join the test and install from Google Play."),
     ("How do I report a problem?", f"Use Settings › Send feedback in the app, or email {EMAIL}."),
 ]
 
@@ -203,6 +204,14 @@ def home():
 <section class="more-grid"><div class="wrap narrow">
   <p class="eyebrow">Privacy</p><h2>Your commute is your business.</h2>
   <p class="lead dark">No ads, and no account needed for bus times. Your favourites stay on your iPhone, and your location is used on the device to find stops near you. It isn't sent to us.</p>
+</div></section>
+
+<section id="android" class="more-grid"><div class="wrap narrow">
+  <p class="eyebrow">Android · beta</p><h2>GoSG Bus for Android is in testing.</h2>
+  <p class="lead dark">Live arrival times for nearby stops, favourites, search by bus number and the Causeway cameras, on Android. It's free during testing, and only people on the tester list can install it.</p>
+  <ol class="steps"><li><b>Request a spot.</b> Send us the Google account email you use for the Play Store.</li><li><b>Wait for the OK.</b> We add you to the tester list, usually within a day.</li><li><b>Join and install.</b> Open the testing link on your Android phone, tap <i>Become a tester</i>, then install from Google Play.</li></ol>
+  <p class="cta"><a class="btn" href="mailto:bestappsclub@gmail.com?subject=Join%20the%20GoSG%20Bus%20Android%20beta&amp;body=Hi%21%20I%27d%20like%20to%20test%20GoSG%20Bus%20on%20Android.%0A%0AMy%20Google%20account%20email%20%28the%20one%20on%20my%20phone%27s%20Play%20Store%29%3A%20%0A">Request the Android beta</a><a class="more" href="https://play.google.com/apps/testing/com.bestappsclub.gosgbus">Already added? Join the test →</a></p>
+  <p class="note">Questions: <a href="mailto:bestappsclub@gmail.com">bestappsclub@gmail.com</a></p>
 </div></section>
 
 <section class="more-grid"><div class="wrap">
