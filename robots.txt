@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bestappsclub.github.io/gosgbus/sitemap.xml
+Sitemap: https://gosgapps.com/sitemap.xml

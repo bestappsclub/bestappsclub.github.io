@@ -7,7 +7,7 @@ Facts about other apps must come from their own store page or site, with the dat
 import json, os, html
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-BASE = "https://bestappsclub.github.io/gosgbus/"
+BASE = "https://gosgapps.com/bus/"  # canonical home since 2026-11-26
 STORE = "https://apps.apple.com/sg/app/id6758246086"
 PRIVACY = "https://bestappsclub.github.io/application/gosgbus/privacy.html"
 TERMS = "https://bestappsclub.github.io/application/gosgbus/terms.html"
